@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block main %}
+<p class="counts"><b>{{ stats.papers }}</b> papers · <b>{{ stats.with_notes }}</b> with notes · <b>{{ stats.notes }}</b> note{{ "" if stats.notes == 1 else "s" }}</p>
+
+<div class="secwrap">
+<div class="secbar" id="secbar" role="group" aria-label="Sections">
+{% for s in sections %}
+  <button class="blk c-{{ s.color }}" style="--n:{{ s.n }}" data-s="{{ s.key }}" aria-describedby="secpop">
+    <span class="nm"><span class="full">{{ s.key }}</span><span class="short">{{ s.code }}</span></span>
+    <span class="ct">{{ s.n }}</span>
+    <span class="done" aria-hidden="true"><i style="width:{{ (100 * s.done / s.n) | round(1) if s.n else 0 }}%"></i></span>
+  </button>
+{% endfor %}
+</div>
+<div class="secpop" id="secpop" role="tooltip" hidden></div>
+</div>
+<p class="seckey"><span id="secdesc"></span></p>
+
+<section class="map" id="map" aria-label="Map of papers">
+  <div class="maphead">
+    <span class="mono">Each dot is a paper</span>
+    <div class="seg" role="group" aria-label="Arrange dots"><button data-mv="time">Over time</button><button data-mv="section">By section</button></div>
+    <label class="sortl">Shade by
+      <select id="mapColor">
+        <option value="u">Who plays the user</option>
+        <option value="tr">Training</option>
+        <option value="ty">Paper type</option>
+        <option value="ml">Model</option>
+        <option value="s">Section</option>
+      </select>
+    </label>
+  </div>
+  <div class="mlegend" id="mlegend"></div>
+  <div class="mrows" id="mrows"></div>
+  <div class="mtip" id="mtip" role="tooltip" hidden></div>
+</section>
+
+<div class="browse">
+  <aside class="facets" id="facets" aria-label="Filters">
+    <div class="fhead"><span>Filter</span><button class="link" id="clearAll" hidden>Clear all</button></div>
+    <div id="facetBody"></div>
+  </aside>
+  <section class="results" aria-label="Papers">
+    <div class="tools">
+      <button class="ftoggle" id="ftoggle" aria-controls="facets" aria-expanded="false">Filter<span id="fcount"></span></button>
+      <input type="search" id="q" placeholder="Search" aria-label="Search titles, summaries, topics, venues, note authors">
+      <label class="sortl">Sort
+        <select id="fSort" aria-label="Sort">
+          <option value="new">Newest first</option>
+          <option value="old">Oldest first</option>
+          <option value="title">Title A–Z</option>
+          <option value="noted">Recently noted</option>
+          <option value="notes">Most notes</option>
+          <option value="section">Section</option>
+        </select>
+      </label>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="active" id="active"></div>
+    <div class="list" id="list"></div>
+    <button class="more" id="more" hidden>More</button>
+  </section>
+</div>
+<script id="data" type="application/json">{{ data_json | safe }}</script>
+<script id="secs" type="application/json">{{ sec_meta | tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="static/index.js?v={{ v }}"></script>{% endblock %}

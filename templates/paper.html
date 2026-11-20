@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}{{ paper.title }} · {{ site.title }}{% endblock %}
+{% block head %}{% if has_math %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">{% endif %}{% endblock %}
+{% block main %}
+<article class="article {% if sec %}c-{{ sec.color }}{% endif %}">
+  <a class="back" href="{{ root }}index.html{% if sec %}#s={{ sec.key | urlencode }}{% endif %}">← {{ sec.key if sec else "All papers" }}</a>
+
+  <div class="pmeta">
+    {% if sec %}<span class="code">{{ sec.code }}</span><span class="sec">{{ sec.key }}</span>{% endif %}
+    {% if paper.type %}<span>{{ paper.type }}</span>{% endif %}
+    <span>{{ paper.year }}</span><span>{{ paper.venue }}</span>
+  </div>
+  {% if paper.thumb %}
+  {% set host = paper.url.split('/')[2] if paper.url and '//' in paper.url else '' %}
+  <aside class="pcard" aria-label="Paper preview">
+    <div class="pc-head">
+      <span class="pc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+      <span><b>{{ "arXiv" if "arxiv.org" in host else host }}</b><span class="mono">{{ paper.id }}</span></span>
+    </div>
+    <a class="pc-shot" href="{{ paper.url }}" target="_blank" rel="noopener"><img src="{{ root }}thumbs/{{ paper.slug }}.webp" alt="First page of the paper" width="300" height="388"></a>
+    <a class="pc-btn" href="{{ paper.url }}" target="_blank" rel="noopener">Open paper ↗</a>
+  </aside>
+  {% endif %}
+  <h1>{{ paper.title }}</h1>
+  {% if paper.topic %}<p class="topic">{{ paper.topic }}</p>{% endif %}
+  {% if paper.summary %}<p class="abs">{{ paper.summary }}</p>{% endif %}
+  <p class="facts">
+    {% if paper.url %}<a href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper ↗</a>{% endif %}
+    <span>Owner: {% if sec and sec.owners %}{% for o in sec.owners %}<a href="https://github.com/{{ o }}">{{ o }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% else %}unclaimed{% endif %}</span>
+    {% if paper.also %}<span>Also: {{ paper.also | join(", ") }}</span>{% endif %}
+  </p>
+
+  <h2 id="notes">Notes <span class="mono">{{ paper.notes | length }}</span></h2>
+  {% for n in paper.notes %}
+  <section class="note" id="n-{{ n.author }}">
+    <div class="by">
+      <img src="https://github.com/{{ n.author }}.png?size=48" alt="" loading="lazy"><b>{{ n.author }}</b><span class="mono">{{ n.date }}</span>
+      {% if repo %}<span class="acts"><a href="https://github.com/{{ repo }}/edit/{{ branch }}/{{ n.path }}">Edit</a><a href="https://github.com/{{ repo }}/commits/{{ branch }}/{{ n.path }}">History</a></span>{% endif %}
+    </div>
+    <div class="md">{{ n.html | safe }}</div>
+  </section>
+  {% else %}
+  <p class="none">No notes yet.</p>
+  {% endfor %}
+  {% if repo %}
+  <div class="add" id="write" data-repo="{{ repo }}" data-branch="{{ branch }}" data-dir="notes/{{ paper.slug }}">
+    <label for="ghUser">GitHub username</label>
+    <input id="ghUser" autocomplete="username" spellcheck="false" placeholder="octocat">
+    <a class="btn" id="writeBtn" href="https://github.com/{{ repo }}/new/{{ branch }}/notes/{{ paper.slug }}">Write a note</a>
+  </div>
+  {% endif %}
+
+  <h2 id="discussion">Discussion</h2>
+  {% if giscus %}
+  <div style="margin-top:18px">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ giscus.repo }}" data-repo-id="{{ giscus.repo_id }}"
+    data-category="{{ giscus.category }}" data-category-id="{{ giscus.category_id }}"
+    data-mapping="specific" data-term="{{ paper.id }}" data-strict="1"
+    data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top"
+    data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy"
+    crossorigin="anonymous" async></script>
+  </div>
+  {% else %}
+  <p class="none">Comments are not set up yet (giscus ids in site.yaml).</p>
+  {% endif %}
+</article>
+{% endblock %}
+{% block scripts %}
+{% if has_math %}<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>{% endif %}
+<script src="{{ root }}static/paper.js?v={{ v }}"></script>
+{% endblock %}

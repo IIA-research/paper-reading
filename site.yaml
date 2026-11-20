@@ -1,0 +1,53 @@
+# Site settings. Commit a change here and the site rebuilds automatically.
+
+title: IIA Paper Reading
+description: Each of us owns a section of the Interactive Intent Alignment literature and writes up our take on every paper in it. Everyone else reads, comments and argues underneath.
+
+# Where this repository lives on GitHub (org/repo). The "Write / Edit note" buttons and comments rely on it.
+repo: IIA-research/paper-reading
+branch: main
+
+# Sections. `owners` are GitHub usernames (no @); more than one is fine.
+# `code` is the short label shown in the list. `color` is one of: blue green violet orange teal amber pink gray
+sections:
+  - key: Understanding
+    code: Un
+    desc: "Infer intent from every signal the user gives, and judge whether the information is enough."
+    color: blue
+    owners: []
+  - key: Elicitation
+    code: El
+    desc: "When information is missing, get it from the user: ask, offer options, or draft first."
+    color: green
+    owners: []
+  - key: Execution
+    code: Ex
+    desc: "Hold to the user's requirements across multi-step execution; deviate only with good reason."
+    color: violet
+    owners: []
+  - key: Reporting
+    code: Re
+    desc: "Let users see whether the result actually matches what they wanted."
+    color: orange
+    owners: []
+  - key: Tracking
+    code: Tk
+    desc: "Keep up when intent changes, including changes the agent itself caused."
+    color: teal
+    owners: []
+  - key: Evaluation
+    code: Ev
+    desc: "Cross-cutting methods: user simulators, interactive evaluation protocols, metrics."
+    color: amber
+    owners: []
+  - key: Training
+    code: Tr
+    desc: "Cross-cutting methods: multi-turn training across capabilities."
+    color: pink
+    owners: []
+
+# Comments (giscus, backed by this repository's GitHub Discussions). IDs come from https://giscus.app
+giscus:
+  repo_id: R_kgDOV1GWTQ
+  category: Paper discussions
+  category_id: DIC_kwDOV1GWTc4DLjqn

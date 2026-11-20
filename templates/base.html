@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}{{ site.title }}{% endblock %}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="{{ root }}static/style.css?v={{ v }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="mast">
+  <div class="wrap mastrow">
+    <a class="title" href="{{ root }}index.html">{{ site.title }}</a>
+    {% if repo %}<nav class="links" aria-label="Links"><a href="https://github.com/{{ repo }}/discussions">Discussions</a><a href="https://github.com/{{ repo }}#readme">How to contribute</a><a href="https://github.com/{{ repo }}">GitHub</a></nav>{% endif %}
+  </div>
+</header>
+<main class="wrap">
+{% block main %}{% endblock %}
+</main>
+<footer class="wrap foot">{% if repo %}<a href="https://github.com/{{ repo }}">{{ repo }}</a>{% endif %}</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>
