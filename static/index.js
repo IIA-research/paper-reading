@@ -175,7 +175,6 @@ function render(){
   const ss = state.sel.s;
   $("secbar").classList.toggle("has-on", ss.size > 0);
   document.querySelectorAll(".blk").forEach(b => { const on = ss.has(b.dataset.s); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
-  $("secdesc").textContent = ss.size === 1 ? SEC[[...ss][0]]?.d || "" : "";
 
   updateFacets();
   renderMap();
@@ -236,9 +235,10 @@ function showPop(b){
   const wrap = pop.parentElement.getBoundingClientRect(), r = b.getBoundingClientRect();
   const w = pop.offsetWidth, x = Math.min(Math.max(r.left - wrap.left + r.width / 2 - w / 2, 0), wrap.width - w);
   pop.style.left = x + "px";
+  pop.style.top = (r.bottom - wrap.top + 8) + "px";
 }
 function hidePop(){ popT = setTimeout(() => { pop.hidden = true; }, 80); }
-document.querySelectorAll(".blk").forEach(b => {
+document.querySelectorAll(".seg.blk").forEach(b => {
   b.addEventListener("mouseenter", () => showPop(b));
   b.addEventListener("focus", () => showPop(b));
   b.addEventListener("mouseleave", hidePop);
@@ -266,7 +266,7 @@ $("active").addEventListener("click", e => {
   toggle(b.dataset.k, b.value);
 });
 $("clearAll").addEventListener("click", () => { FACETS.forEach(f => state.sel[f.k].clear()); state.q = ""; $("q").value = ""; changed(); });
-$("secbar").addEventListener("click", e => { const b = e.target.closest(".blk"); if (b) { toggle("s", b.dataset.s); showPop(b); } });
+$("secbar").addEventListener("click", e => { const b = e.target.closest(".blk"); if (b) { toggle("s", b.dataset.s); if (b.classList.contains("seg")) showPop(b); } });
 let qt; $("q").addEventListener("input", () => { clearTimeout(qt); qt = setTimeout(() => { state.q = $("q").value.trim(); changed(); }, 150); });
 $("fSort").addEventListener("change", () => { state.sort = $("fSort").value; changed(); });
 $("more").addEventListener("click", () => { shown += PAGE; render(); });

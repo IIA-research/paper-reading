@@ -1,20 +1,40 @@
 {% extends "base.html" %}
 {% block main %}
-<p class="counts"><b>{{ stats.papers }}</b> papers · <b>{{ stats.with_notes }}</b> with notes · <b>{{ stats.notes }}</b> note{{ "" if stats.notes == 1 else "s" }}</p>
-
 <div class="secwrap">
-<div class="secbar" id="secbar" role="group" aria-label="Sections">
-{% for s in sections %}
-  <button class="blk c-{{ s.color }}" style="--n:{{ s.n }}" data-s="{{ s.key }}" aria-describedby="secpop">
-    <span class="nm"><span class="full">{{ s.key }}</span><span class="short">{{ s.code }}</span></span>
-    <span class="ct">{{ s.n }}</span>
-    <span class="done" aria-hidden="true"><i style="width:{{ (100 * s.done / s.n) | round(1) if s.n else 0 }}%"></i></span>
-  </button>
-{% endfor %}
-</div>
+<section class="comp" id="secbar" aria-label="Sections">
+  <h2 class="comp-title">What's in the reading list</h2>
+  <div class="comp-grid">
+    <div>
+      <h3 class="comp-h">Sections</h3>
+      <p class="comp-asof">{{ stats.papers }} papers · {{ stats.with_notes }} with notes · as of {{ built }}</p>
+      <div class="comp-leg" role="group" aria-label="Filter by section">
+      {% for s in sections %}
+        <button class="litem blk c-{{ s.color }}" data-s="{{ s.key }}" aria-pressed="false">
+          <span class="nm"><i class="sq" aria-hidden="true"></i>{{ s.key }}</span>
+          <span class="pc">{{ "%.2f" | format(100 * s.n / stats.papers if stats.papers else 0) }}%<span class="ct">{{ s.n }}</span></span>
+        </button>
+      {% endfor %}
+      </div>
+    </div>
+    <div class="comp-3d">
+      {# isometric stacked bar: front face + lighter top + darker side, width = share of papers #}
+      {% set W = 520 %}{% set H = 52 %}{% set DX = 14 %}{% set DY = 10 %}{% set Y0 = 16 %}
+      <svg viewBox="0 0 {{ W + DX + 12 }} {{ Y0 + H + 18 }}" role="img" aria-label="Share of papers by section">
+        <polygon class="floor" points="6,{{ Y0 + H + 2 }} {{ W + DX + 6 }},{{ Y0 + H - DY + 2 }} {{ W + DX + 12 }},{{ Y0 + H - DY + 10 }} 12,{{ Y0 + H + 10 }}"/>
+        {% set ns = namespace(x=2) %}
+        {% for s in sections %}{% set w = (W * s.n / stats.papers) if stats.papers else 0 %}
+        <g class="seg blk c-{{ s.color }}" data-s="{{ s.key }}" aria-describedby="secpop">
+          <polygon class="top" points="{{ ns.x }},{{ Y0 }} {{ ns.x + DX }},{{ Y0 - DY }} {{ ns.x + w + DX }},{{ Y0 - DY }} {{ ns.x + w }},{{ Y0 }}"/>
+          <rect class="front" x="{{ ns.x }}" y="{{ Y0 }}" width="{{ w }}" height="{{ H }}"/>
+          {% if loop.last %}<polygon class="side" points="{{ ns.x + w }},{{ Y0 }} {{ ns.x + w + DX }},{{ Y0 - DY }} {{ ns.x + w + DX }},{{ Y0 + H - DY }} {{ ns.x + w }},{{ Y0 + H }}"/>{% endif %}
+        </g>{% set ns.x = ns.x + w %}
+        {% endfor %}
+      </svg>
+    </div>
+  </div>
+</section>
 <div class="secpop" id="secpop" role="tooltip" hidden></div>
 </div>
-<p class="seckey"><span id="secdesc"></span></p>
 
 <section class="map" id="map" aria-label="Map of papers">
   <div class="maphead">
