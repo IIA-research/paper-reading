@@ -1,0 +1,42 @@
+# Featured papers: the organizers' picks (精读), shown first on the home page and marked on each paper.
+# Only admins should edit this file. Order here is the order on the home page.
+#
+#   - id: "2610.12655"          # the paper's id from papers.yaml (keep the quotes)
+#     why: One or two sentences on why a newcomer should read this.   (optional; without it the summary is shown)
+#     by: your-github-username   # optional, shown as "Picked by ..."
+#
+# Initial list: the papers starred in the IIA literature map (claude.ai), imported 2026-11-20.
+
+- id: "2602.21337"
+- id: "2603.03325"
+- id: "2602.20424"
+- id: "2605.20087"
+- id: "2502.09101"
+- id: "2605.25284"
+- id: "2607.01953"
+- id: "2609.31603"
+- id: "2610.15948"
+- id: "2503.12370"
+- id: "2509.13664"
+- id: "2610.24411"
+- id: "2610.12655"
+- id: "2602.02455"
+- id: "2602.03468"
+- id: "2601.06407"
+- id: "2609.24290"
+- id: "2602.11199"
+- id: "2502.04485"
+- id: "2511.10453"
+- id: "2512.21120"
+- id: "2610.36353"
+- id: "2610.20052"
+- id: "2405.12063"
+- id: "2608.11631"
+- id: "2610.08413"
+- id: "2605.07937"
+- id: "2603.19997"
+- id: "2510.24668"
+- id: "2611.11560"
+- id: "2605.28108"
+- id: "2611.12393"
+- id: "2611.09647"

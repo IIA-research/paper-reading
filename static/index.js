@@ -13,6 +13,7 @@ const EARLY = "2019 and earlier";
 const yearBin = d => d.y >= 2020 ? String(d.y) : EARLY;
 const FACETS = [
   {k: "s",  name: "Section",            get: d => state.also ? [d.s, ...d.al] : [d.s], order: SECS.map(s => s.k)},
+  {k: "ft", name: "Featured",           get: d => [d.f ? "Featured" : "Not featured"], order: ["Featured", "Not featured"]},
   {k: "ty", name: "Paper type",         get: d => [d.ty]},
   {k: "u",  name: "Who plays the user", get: d => [d.u]},
   {k: "tr", name: "Training",           get: d => [d.tr]},
@@ -132,7 +133,7 @@ function renderMap(){
     const n = ps.filter(d => keep.has(d.slug)).length, on = state.sel[r.fk].has(r.fv);
     return `<div class="mrow${on ? " on" : ""}">
       <button class="mlab" data-fk="${r.fk}" data-fv="${esc(r.fv)}" aria-pressed="${on}">${r.label}</button>
-      <div class="mdots">${ps.map(d => `<i class="pt ${dotClass(d)}${keep.has(d.slug) ? "" : " off"}${d.a.length ? " nt" : ""}" data-slug="${esc(d.slug)}"></i>`).join("")}</div>
+      <div class="mdots">${ps.map(d => `<i class="pt ${dotClass(d)}${keep.has(d.slug) ? "" : " off"}${d.a.length ? " nt" : ""}${d.f ? " fx" : ""}" data-slug="${esc(d.slug)}"></i>`).join("")}</div>
       <span class="mct">${n === ps.length ? ps.length : `${n}<span>/${ps.length}</span>`}</span>
     </div>`;
   }).join("");
@@ -162,6 +163,7 @@ function showMapTip(el){
 
 // ---- sorting ----
 const SORTS = {
+  featured: (a, b) => b.f - a.f || a.fr - b.fr || (b.y || 0) - (a.y || 0),
   new: (a, b) => (b.y || 0) - (a.y || 0) || a.t.localeCompare(b.t),
   old: (a, b) => (a.y || 0) - (b.y || 0) || a.t.localeCompare(b.t),
   title: (a, b) => a.t.localeCompare(b.t),
@@ -201,7 +203,7 @@ function render(){
     return head + `<a class="row c-${esc(s.c)}" href="p/${encodeURIComponent(d.slug)}/index.html">
       <span class="code" title="${esc(d.s)}">${esc(s.code)}</span>
       <span class="mid"><span class="t">${esc(d.t)}</span>
-        <span class="meta"><span class="ty">${esc(d.ty)}</span><span class="vn">${esc(venueLabel(d))}</span>${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
+        <span class="meta">${d.f ? `<span class="fe">★ Featured</span>` : ""}<span class="ty">${esc(d.ty)}</span><span class="vn">${esc(venueLabel(d))}</span>${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
         ${d.m ? `<span class="s">${esc(d.m)}</span>` : ""}</span>
       ${d.th ? `<img class="th" src="thumbs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy" width="84" height="109">` : ""}
     </a>`;
@@ -282,6 +284,7 @@ $("ftoggle").addEventListener("click", () => {
   const open = $("facets").classList.toggle("open");
   $("ftoggle").setAttribute("aria-expanded", open);
 });
+document.querySelector(".feat-all")?.addEventListener("click", () => setTimeout(() => document.querySelector(".results")?.scrollIntoView({behavior: "smooth"}), 0));
 window.addEventListener("hashchange", () => { readHash(); shown = PAGE; render(); });
 readHash();
 render();

@@ -6,6 +6,7 @@
   <a class="back" href="{{ root }}index.html{% if sec %}#s={{ sec.key | urlencode }}{% endif %}">← {{ sec.key if sec else "All papers" }}</a>
 
   <div class="pmeta">
+    {% if paper.featured %}<span class="fbadge">★ Featured</span>{% endif %}
     {% if sec %}<span class="code">{{ sec.code }}</span><span class="sec">{{ sec.key }}</span>{% endif %}
     {% if paper.type %}<span>{{ paper.type }}</span>{% endif %}
     <span>{{ paper.year }}</span><span>{{ paper.venue }}</span>
@@ -23,6 +24,7 @@
   {% endif %}
   <h1>{{ paper.title }}</h1>
   {% if paper.topic %}<p class="topic">{{ paper.topic }}</p>{% endif %}
+  {% if paper.featured and paper.featured.why %}<div class="whyread"><span class="lbl">Why read this</span>{{ paper.featured.why }}{% if paper.featured.by %}<span class="fby"> Picked by {{ paper.featured.by }}</span>{% endif %}</div>{% endif %}
   {% if paper.summary %}<p class="abs">{{ paper.summary }}</p>{% endif %}
   <p class="facts">
     {% if paper.url %}<a href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper ↗</a>{% endif %}

@@ -1,4 +1,4 @@
-# IIA Paper Reading
+# Interactive Intent Alignment (IIA) Paper Reading
 
 Site: https://iia-research.github.io/paper-reading/
 
@@ -14,6 +14,16 @@ Each of us owns a section of the Interactive Intent Alignment literature and wri
 To change your note later, click **Edit** on it.
 
 Notes live at `notes/<paper id>/<github username>.md` — one file per person per paper, so nobody overwrites anyone else. Raw HTML is not rendered.
+
+## Featured papers (admins)
+
+`featured.yaml` lists the organizers' picks. They appear in a Featured shelf on the home page (first six, in file order), carry a ★ Featured mark in the list and on the paper page, and can be filtered or sorted first. To feature a paper, add its id; `why` (a line for newcomers) and `by` are optional:
+
+```yaml
+- id: "2610.12655"
+  why: Clear formulation of when asking is worth it.
+  by: your-github-username
+```
 
 ## Thumbnails
 

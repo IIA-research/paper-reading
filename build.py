@@ -88,6 +88,7 @@ def main():
             warnings.append(f"{p['id']}: section '{p.get('section')}' is not in site.yaml")
         p["notes"] = []
         p["thumb"] = (ROOT / "thumbs" / f"{p['slug']}.webp").exists()
+        p["featured"] = None
         by_slug[p["slug"]] = p
 
     # Notes: notes/<paper slug>/<GitHub username>.md
@@ -129,6 +130,20 @@ def main():
         s["n"] = len(mine)
         s["done"] = sum(1 for p in mine if p["notes"])
     all_notes = [(n, p) for p in plist for n in p["notes"]]
+    # featured.yaml: admins' picks, in display order. BaseLoader keeps ids as text (2610.10740 must not become a float).
+    picks = []
+    fpath = ROOT / "featured.yaml"
+    if fpath.exists():
+        by_id = {str(p["id"]): p for p in plist}
+        for rank, f in enumerate(yaml.load(fpath.read_text(encoding="utf8"), Loader=yaml.BaseLoader) or []):
+            fid = (f.get("id") if isinstance(f, dict) else f) or ""
+            p = by_id.get(str(fid).strip())
+            if not p:
+                warnings.append(f"featured.yaml: no paper with id {fid}")
+                continue
+            p["featured"] = {"why": (f.get("why") or "").strip() if isinstance(f, dict) else "",
+                             "by": (f.get("by") or "").strip() if isinstance(f, dict) else "", "rank": rank}
+            picks.append(p)
     recent = sorted(all_notes, key=lambda x: x[0]["date"], reverse=True)[:8]
     stats = {
         "papers": len(plist),
@@ -161,12 +176,12 @@ def main():
         "m": p.get("summary") or "", "a": [n["author"] for n in p["notes"]], "last": p["last"],
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
-        "th": p["thumb"],
+        "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(
         env.get_template("index.html").render(
-            root="", stats=stats, recent=recent, data_json=data_json,
+            root="", stats=stats, recent=recent, data_json=data_json, picks=picks,
             sec_meta=[{"k": s["key"], "c": s["color"], "code": s["code"], "d": s.get("desc", ""), "o": s["owners"],
                        "n": s["n"], "done": s["done"]} for s in sections], **common),
         encoding="utf8")
