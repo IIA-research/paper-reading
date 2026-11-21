@@ -17,6 +17,11 @@
     <a class="title" href="{{ root }}index.html">{{ site.title }}</a>
     {% if repo %}<nav class="links" aria-label="Links"><a href="https://github.com/{{ repo }}/discussions">Discussions</a><a href="https://github.com/{{ repo }}#readme">How to contribute</a><a href="https://github.com/{{ repo }}">GitHub</a></nav>{% endif %}
   </div>
+  <nav class="wrap pnav" aria-label="Pages">
+    <a href="{{ root }}index.html" {% if page in ("papers", "paper") %}aria-current="page"{% endif %}>Papers</a>
+    <a href="{{ root }}featured.html" {% if page == "featured" %}aria-current="page"{% endif %}>Featured<span>{{ n_featured }}</span></a>
+    <a href="{{ root }}overview.html" {% if page == "overview" %}aria-current="page"{% endif %}>Overview</a>
+  </nav>
 </header>
 <main class="wrap">
 {% block main %}{% endblock %}

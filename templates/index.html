@@ -1,75 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="secwrap">
-<section class="comp" id="secbar" aria-label="Sections">
-  <h2 class="comp-title">What's in the reading list</h2>
-  <div class="comp-grid">
-    <div>
-      <h3 class="comp-h">Sections</h3>
-      <p class="comp-asof">{{ stats.papers }} papers · {{ stats.with_notes }} with notes · as of {{ built }}</p>
-      <div class="comp-leg" role="group" aria-label="Filter by section">
-      {% for s in sections %}
-        <button class="litem blk c-{{ s.color }}" data-s="{{ s.key }}" aria-pressed="false">
-          <span class="nm"><i class="sq" aria-hidden="true"></i>{{ s.key }}</span>
-          <span class="pc">{{ "%.2f" | format(100 * s.n / stats.papers if stats.papers else 0) }}%<span class="ct">{{ s.n }}</span></span>
-        </button>
-      {% endfor %}
-      </div>
-    </div>
-    <div class="comp-3d">
-      {# isometric stacked bar: front face + lighter top + darker side, width = share of papers #}
-      {% set W = 520 %}{% set H = 52 %}{% set DX = 14 %}{% set DY = 10 %}{% set Y0 = 16 %}
-      <svg viewBox="0 0 {{ W + DX + 12 }} {{ Y0 + H + 18 }}" role="img" aria-label="Share of papers by section">
-        <polygon class="floor" points="6,{{ Y0 + H + 2 }} {{ W + DX + 6 }},{{ Y0 + H - DY + 2 }} {{ W + DX + 12 }},{{ Y0 + H - DY + 10 }} 12,{{ Y0 + H + 10 }}"/>
-        {% set ns = namespace(x=2) %}
-        {% for s in sections %}{% set w = (W * s.n / stats.papers) if stats.papers else 0 %}
-        <g class="seg blk c-{{ s.color }}" data-s="{{ s.key }}" aria-describedby="secpop">
-          <polygon class="top" points="{{ ns.x }},{{ Y0 }} {{ ns.x + DX }},{{ Y0 - DY }} {{ ns.x + w + DX }},{{ Y0 - DY }} {{ ns.x + w }},{{ Y0 }}"/>
-          <rect class="front" x="{{ ns.x }}" y="{{ Y0 }}" width="{{ w }}" height="{{ H }}"/>
-          {% if loop.last %}<polygon class="side" points="{{ ns.x + w }},{{ Y0 }} {{ ns.x + w + DX }},{{ Y0 - DY }} {{ ns.x + w + DX }},{{ Y0 + H - DY }} {{ ns.x + w }},{{ Y0 + H }}"/>{% endif %}
-        </g>{% set ns.x = ns.x + w %}
-        {% endfor %}
-      </svg>
-    </div>
-  </div>
-</section>
-<div class="secpop" id="secpop" role="tooltip" hidden></div>
-</div>
-
-{% if picks %}
-<section class="feat" aria-label="Featured papers">
-  <div class="feat-head"><h2>Featured</h2><span class="sub">{{ picks | length }} papers picked by the organizers. New to the area? Start here.</span>{% if picks | length > 6 %}<a class="feat-all" href="#ft=Featured">See all {{ picks | length }} →</a>{% endif %}</div>
-  <div class="feat-grid">
-  {% for p in picks[:6] %}{% set s = sec_by_key.get(p.section) %}
-    <a class="fcard {% if s %}c-{{ s.color }}{% endif %}" href="p/{{ p.slug }}/index.html">
-      <span class="fmeta">{% if s %}<span class="code">{{ s.code }}</span><span>{{ s.key }}</span>{% endif %}<span class="fy">{{ p.type }} · {{ p.year }}</span></span>
-      <span class="ft">{{ p.title }}</span>
-      {% if p.featured.why %}<span class="fw">{{ p.featured.why }}</span>{% elif p.summary %}<span class="fw">{{ p.summary }}</span>{% endif %}
-      {% if p.featured.by %}<span class="fby">Picked by {{ p.featured.by }}</span>{% endif %}
-    </a>
-  {% endfor %}
-  </div>
-</section>
-{% endif %}
-
-<section class="map" id="map" aria-label="Map of papers">
-  <div class="maphead">
-    <span class="mono">Each dot is a paper</span>
-    <div class="seg" role="group" aria-label="Arrange dots"><button data-mv="time">Over time</button><button data-mv="section">By section</button></div>
-    <label class="sortl">Shade by
-      <select id="mapColor">
-        <option value="u">Who plays the user</option>
-        <option value="tr">Training</option>
-        <option value="ty">Paper type</option>
-        <option value="ml">Model</option>
-        <option value="s">Section</option>
-      </select>
-    </label>
-  </div>
-  <div class="mlegend" id="mlegend"></div>
-  <div class="mrows" id="mrows"></div>
-  <div class="mtip" id="mtip" role="tooltip" hidden></div>
-</section>
+<p class="intro"><b>{{ stats.papers }}</b> papers on interactive intent alignment, sorted into {{ sections | length }} sections. <a href="featured.html">{{ picks | length }} are featured</a> as a starting point; <a href="overview.html">Overview</a> shows how the field breaks down.</p>
 
 <div class="browse">
   <aside class="facets" id="facets" aria-label="Filters">
@@ -79,6 +10,7 @@
   <section class="results" aria-label="Papers">
     <div class="tools">
       <button class="ftoggle" id="ftoggle" aria-controls="facets" aria-expanded="false">Filter<span id="fcount"></span></button>
+      <button class="featonly" id="featOnly" aria-pressed="false">★ Featured only</button>
       <input type="search" id="q" placeholder="Search" aria-label="Search titles, summaries, topics, venues, note authors">
       <label class="sortl">Sort
         <select id="fSort" aria-label="Sort">

@@ -157,8 +157,35 @@ def main():
     if gc.get("repo_id") and gc.get("category_id"):
         giscus = {"repo": repo, **gc}
 
+    # "How methods are shifting": share of papers per attribute value, earlier years vs the last two years
+    this_year = dt.date.today().year
+    recent_ps = [p for p in plist if str(p.get("year") or "").isdigit() and this_year - 1 <= int(p["year"]) <= this_year]
+    early_ps = [p for p in plist if str(p.get("year") or "").isdigit() and int(p["year"]) < this_year - 1]
+    attr_defs = [
+        ("u", "Who plays the user", lambda p: "None" if p.get("user") == "Unspecified" else p.get("user"), ["Human", "User simulator", "Static dataset", "None"]),
+        ("tr", "Training", lambda p: p.get("training"), ["RL", "SFT", "Preference optimization", "Training-free", "Not applicable"]),
+        ("ty", "Paper type", lambda p: p.get("type"), ["Method", "Benchmark", "Analysis", "User study", "Survey / position"]),
+        ("ml", "Model", lambda p: p.get("model"), ["LLM", "VLM", "Embodied / VLA", "Speech", "None"]),
+    ]
+    shift_attrs = []
+    for k, name, get, order in attr_defs:
+        rows = []
+        for v in order:
+            a_ = round(100 * sum(get(p) == v for p in early_ps) / max(1, len(early_ps)))
+            b_ = round(100 * sum(get(p) == v for p in recent_ps) / max(1, len(recent_ps)))
+            if a_ or b_:
+                rows.append({"v": v, "a": a_, "b": b_, "d": b_ - a_})
+        top = max([max(r["a"], r["b"]) for r in rows] + [10])
+        mx = min(100, -(-top // 10) * 10)
+        for r in rows:
+            r["pa"], r["pb"] = round(100 * r["a"] / mx, 1), round(100 * r["b"] / mx, 1)
+        shift_attrs.append({"k": k, "name": name, "rows": rows, "max": mx})
+    shift = {"attrs": shift_attrs, "early_label": f"up to {this_year - 2}", "recent_label": f"{this_year - 1}–{str(this_year)[2:]}",
+             "n_early": len(early_ps), "n_recent": len(recent_ps)}
+
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
     common = {"site": site, "repo": repo, "branch": branch, "sections": sections, "sec_by_key": sec_by_key,
+              "n_featured": len(picks),
               "giscus": giscus, "built": dt.date.today().isoformat(),
               "v": dt.datetime.now().strftime("%Y%m%d%H%M%S")}
 
@@ -181,10 +208,14 @@ def main():
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(
         env.get_template("index.html").render(
-            root="", stats=stats, recent=recent, data_json=data_json, picks=picks,
+            root="", page="papers", stats=stats, recent=recent, data_json=data_json, picks=picks,
             sec_meta=[{"k": s["key"], "c": s["color"], "code": s["code"], "d": s.get("desc", ""), "o": s["owners"],
                        "n": s["n"], "done": s["done"]} for s in sections], **common),
         encoding="utf8")
+
+    for name, page in (("featured.html", "featured"), ("overview.html", "overview")):
+        (OUT / name).write_text(env.get_template(name).render(root="", page=page, stats=stats, picks=picks, shift=shift, **common),
+                                encoding="utf8")
 
     tpl = env.get_template("paper.html")
     for p in plist:
@@ -192,7 +223,7 @@ def main():
         d.mkdir()
         has_math = any('class="math' in n["html"] for n in p["notes"])
         (d / "index.html").write_text(
-            tpl.render(root="../../", paper=p, sec=sec_by_key.get(p.get("section")), has_math=has_math, **common),
+            tpl.render(root="../../", page="paper", paper=p, sec=sec_by_key.get(p.get("section")), has_math=has_math, **common),
             encoding="utf8")
 
     for w in warnings:

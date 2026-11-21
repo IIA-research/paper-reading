@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Featured · {{ site.title }}{% endblock %}
+{% block main %}
+<h1 class="ptitle-h">Featured</h1>
+<p class="intro">{{ picks | length }} papers picked by the organizers. New to interactive intent alignment? Start here.</p>
+<div class="feat-grid">
+{% for p in picks %}{% set s = sec_by_key.get(p.section) %}
+  <a class="fcard {% if s %}c-{{ s.color }}{% endif %}" href="p/{{ p.slug }}/index.html">
+    <span class="fmeta">{% if s %}<span class="code">{{ s.code }}</span><span>{{ s.key }}</span>{% endif %}<span class="fy">{{ p.type }} · {{ p.year }}</span></span>
+    <span class="ft">{{ p.title }}</span>
+    {% if p.featured.why %}<span class="fw">{{ p.featured.why }}</span>{% elif p.summary %}<span class="fw">{{ p.summary }}</span>{% endif %}
+    {% if p.featured.by %}<span class="fby">Picked by {{ p.featured.by }}</span>{% endif %}
+  </a>
+{% endfor %}
+</div>
+{% endblock %}
