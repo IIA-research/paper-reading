@@ -9,5 +9,3 @@ Each item has a request (visible), a record store (visible), hidden information,
 Scoring has two parts: scoring the plan (checking each constraint), and scoring the questions.
 
 The data comes from existing optimization problems.
-
-*Translated from the author's Chinese note.*

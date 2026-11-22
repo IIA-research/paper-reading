@@ -246,10 +246,12 @@ def main():
                        "n": s["n"], "done": s["done"]} for s in sections], **common),
         encoding="utf8")
 
-    for name, page in (("featured.html", "featured"),):   # overview.html is retired (kept in templates/)
+    for name, page in (("recommended.html", "featured"),):   # overview.html is retired (kept in templates/)
         (OUT / name).write_text(env.get_template(name).render(root="", page=page, stats=stats, picks=picks, shift=shift, **common),
                                 encoding="utf8")
 
+    # the page was called featured.html before; keep old links working
+    (OUT / "featured.html").write_text('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=recommended.html"><link rel="canonical" href="recommended.html"><a href="recommended.html">Recommended papers</a>\n')
     tpl = env.get_template("paper.html")
     for p in plist:
         d = OUT / "p" / p["slug"]

@@ -9,5 +9,3 @@ The traditional split is aleatoric vs. epistemic, which doesn't account for unce
 This paper splits aleatoric uncertainty into *specification* and *residual aleatoric* uncertainty.
 
 It still relies on clarified rewrites of the input.
-
-*Translated from the author's Chinese note.*

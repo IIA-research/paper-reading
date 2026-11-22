@@ -11,5 +11,3 @@ Missing information falls into four types: **goal** (unclear what the final deli
 Conclusion: if what is missing is the *goal*, it must be clarified right at the start; if it is the *input data*, asking any time before the halfway point is still fine.
 
 Second experiment: models decide for themselves when to ask, and their actual timing is compared with the best timing found by the forced-insertion experiment. None of the current models ask at the best time.
-
-*Translated from the author's Chinese note.*

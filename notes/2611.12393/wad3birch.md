@@ -9,5 +9,3 @@ Evaluation has two parts: whether the agent found the right work, and whether it
 All data is simulated: a company with people and an org structure, plus events, rendered into a system.
 
 Stopping to ask a human counts as a failure.
-
-*Translated from the author's Chinese note.*

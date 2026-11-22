@@ -16,5 +16,3 @@ Example asset:
 > - *Rationale:* the user writes reviews for a real audience, who care about "what this does for my life", not a spec sheet; the review also speaks in the user's own voice, so made-up experiences hurt credibility.
 > - *Requirements:* ① explain how the product's features simplify the user's daily routine; ② don't write any number the user hasn't measured — use a [my time] placeholder.
 > - *Facts:* the user is busy in the mornings (source: the user's first correction); the user has never timed this styler (source: the user's second correction).
-
-*Translated from the author's Chinese note.*

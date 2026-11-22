@@ -25,9 +25,9 @@ To change your note later, click **Edit** on it.
 
 Notes live at `notes/<paper id>/<github username>.md` — one file per person per paper, so nobody overwrites anyone else. Raw HTML is not rendered.
 
-## Featured papers (admins)
+## Recommended papers (admins)
 
-`featured.yaml` lists the organizers' picks. They appear in a Featured shelf on the home page (first six, in file order), carry a ★ Featured mark in the list and on the paper page, and can be filtered or sorted first. To feature a paper, add its id; `why` (a line for newcomers) and `by` are optional:
+`featured.yaml` lists the papers the organizers recommend reading first. They are listed, in file order, on the Recommended page, carry a ★ Recommended mark in the list and on the paper page, and can be filtered or sorted first. To recommend a paper, add its id; `why` (a line for newcomers) and `by` are optional:
 
 ```yaml
 - id: "2610.12655"
@@ -35,9 +35,9 @@ Notes live at `notes/<paper id>/<github username>.md` — one file per person pe
   by: your-github-username
 ```
 
-## Thumbnails
+## Figures and thumbnails
 
-When a paper gets its first note, the deploy workflow downloads that paper's PDF from arXiv, saves a small image of page 1 to `thumbs/`, and commits it. Only noted papers get one. To make them locally: `python scripts/make_thumbs.py`.
+When a paper gets its first note, the deploy workflow downloads that paper's PDF from arXiv, crops its Figure 1 to `figs/` and saves a small image of page 1 to `thumbs/` (used when there is no Figure 1), then commits them. Only noted papers get them. If a crop looks wrong, replace `figs/<paper id>.webp` with your own image; it is never regenerated. To make them locally: `python scripts/make_thumbs.py`.
 
 ## Commenting
 
