@@ -14771,3 +14771,33 @@
   model: None
   topic: Levels of unexpressed need (classic)
   summary: Taylor proposes four levels of information need (from the visceral need to the compromised question), noting that a user's question is often a compromised expression of the true need, which must be negotiated to be revealed.
+- id: '2601.08427'
+  title: 'Silence the Judge: Reinforcement Learning with Self-Verifier via Latent Geometric Clustering'
+  url: https://arxiv.org/abs/2601.08427
+  year: 2026
+  venue: EMNLP 2026
+  status: published
+  venue_source: https://aclanthology.org/2026.emnlp-main.2569/
+  section: Training
+  type: Method
+  dims: []
+  training: Reinforcement learning
+  modality: [Text]
+  model: LLM
+  topic: Intrinsic rewards from hidden representations
+  summary: Latent-GRPO scores sampled answers by how close their terminal hidden states are to a robust center, supplying a training reward without reference answers or an external judge.
+- id: '2512.02807'
+  title: 'SR-GRPO: Stable Rank as an Intrinsic Geometric Reward for Large Language Model Alignment'
+  url: https://arxiv.org/abs/2512.02807
+  year: 2025
+  venue: NeurIPS 2026
+  status: accepted
+  venue_source: https://yya518.github.io/research
+  section: Training
+  type: Method
+  dims: []
+  training: Reinforcement learning
+  modality: [Text]
+  model: LLM
+  topic: Intrinsic rewards from hidden representations
+  summary: SR-GRPO uses the stable rank of token representations from a frozen model to score candidate answers and reward a policy during training.

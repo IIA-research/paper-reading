@@ -1,7 +1,0 @@
----
-name: "Kevin"
----
-
-CaRT studies how an agent can tell when it has enough information to stop a medical interview or end mathematical reasoning. For medical interviews, the authors identify a pivotal exchange after which diagnostic accuracy rises substantially. They label the dialogue up to and including that exchange “stop.” They then replace the exchange so that the dialogue lacks the key information and diagnostic accuracy falls. This version is labeled “continue.” The paired dialogues have the same number of turns. To estimate accuracy, Llama-3.1-8B-Instruct makes 50 diagnoses from the same dialogue, and the authors calculate the fraction that are correct. Given the labels, GPT-4o writes explanations for stopping or continuing. These explanations and labels are used to fine-tune a Qwen2.5-3B-Instruct stopping model. For math, the authors remove necessary reasoning steps to construct examples that warrant further reasoning.
-
-The benchmark turns diagnostic questions from MedQA-USMLE and MedMCQA into simulated interviews in which the patient has access to the full case. Each stopping strategy reads the same pregenerated dialogues and decides after each turn whether to ask another question. Dermatology cases from CRAFT-MD provide a cross-domain test. For math, the authors train on DeepScaleR-preview and test on AIME2025. Baselines include the original model and standard supervised fine-tuning.
