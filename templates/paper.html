@@ -3,31 +3,30 @@
 {% block head %}{% if has_math %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">{% endif %}{% endblock %}
 {% block main %}
 <article class="article">
-  <a class="back" href="{{ root }}index.html">← All papers</a>
+  <header class="ahead">
+    <a class="back" href="{{ root }}index.html">← All papers</a>
+    <div class="pmeta">
+      {% if paper.featured %}<span class="fbadge">★ Featured</span>{% endif %}
+      {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
+      {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
+    </div>
+    <h1>{{ paper.title }}</h1>
+    {% if paper.topic %}<p class="topic">{{ paper.topic }}</p>{% endif %}
+  </header>
 
-  <div class="pmeta">
-    {% if paper.featured %}<span class="fbadge">★ Featured</span>{% endif %}
-    {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
-    {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
-  </div>
-  {% if paper.thumb %}
   {% set host = paper.url.split('/')[2] if paper.url and '//' in paper.url else '' %}
-  <aside class="pcard" aria-label="Paper preview">
+  <aside class="pcard{% if not paper.thumb %} noshot{% endif %}" aria-label="The paper">
     <div class="pc-head">
       <span class="pc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
-      <span><b>{{ "arXiv" if "arxiv.org" in host else host }}</b><span class="mono">{{ paper.id }}</span></span>
+      <span><b>{{ "arXiv" if "arxiv.org" in host else (host or "Paper") }}</b><span class="mono">{{ paper.id }}</span></span>
     </div>
-    <a class="pc-shot" href="{{ paper.url }}" target="_blank" rel="noopener"><img src="{{ root }}thumbs/{{ paper.slug }}.webp" alt="First page of the paper" width="300" height="388"></a>
-    <a class="pc-btn" href="{{ paper.url }}" target="_blank" rel="noopener">Open paper ↗</a>
+    {% if paper.thumb %}<a class="pc-shot" href="{{ paper.url }}" target="_blank" rel="noopener"><img src="{{ root }}thumbs/{{ paper.slug }}.webp" alt="First page of the paper" width="300" height="388"></a>{% endif %}
+    {% if paper.url %}<a class="pc-btn" href="{{ paper.url }}" target="_blank" rel="noopener">Open paper ↗</a>{% endif %}
   </aside>
-  {% endif %}
-  <h1>{{ paper.title }}</h1>
-  {% if paper.topic %}<p class="topic">{{ paper.topic }}</p>{% endif %}
+
+  <div class="abody">
   {% if paper.featured and paper.featured.why %}<div class="whyread"><span class="lbl">Why read this</span>{{ paper.featured.why }}{% if paper.featured.by %}<span class="fby"> Picked by {{ paper.featured.by }}</span>{% endif %}</div>{% endif %}
   {% if paper.summary %}<p class="abs">{{ paper.summary }}</p>{% endif %}
-  <p class="facts">
-    {% if paper.url %}<a href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper ↗</a>{% endif %}
-  </p>
 
   <h2 id="notes">Notes <span class="mono">{{ paper.notes | length }}</span></h2>
   {% for n in paper.notes %}
@@ -65,6 +64,7 @@
   {% else %}
   <p class="none">Comments are not set up yet (giscus ids in site.yaml).</p>
   {% endif %}
+  </div>
 </article>
 {% endblock %}
 {% block scripts %}
