@@ -27,6 +27,7 @@
   <div class="abody">
   {% if paper.featured and paper.featured.why %}<div class="whyread"><span class="lbl">Why read this</span>{{ paper.featured.why }}{% if paper.featured.by %}<span class="fby"> Picked by {{ paper.featured.by }}</span>{% endif %}</div>{% endif %}
   {% if paper.summary %}<p class="abs">{{ paper.summary }}</p>{% endif %}
+  {% if paper.fig %}<figure class="pfig"><a href="{{ paper.url }}" target="_blank" rel="noopener"><img src="{{ root }}figs/{{ paper.slug }}.webp" alt="Figure 1 of the paper"></a><figcaption>Figure 1 from the paper</figcaption></figure>{% endif %}
 
   <h2 id="notes">Notes <span class="mono">{{ paper.notes | length }}</span></h2>
   {% for n in paper.notes %}

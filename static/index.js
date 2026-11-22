@@ -137,7 +137,7 @@ function render(){
       <span class="mid"><span class="t">${esc(d.t)}</span>
         <span class="meta">${venueBadge(d)}${d.k === "Benchmark" ? `<span class="bm">Benchmark</span>` : ""}${d.f ? `<span class="fe">★ Featured</span>` : ""}${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
         ${d.m ? `<span class="s">${esc(d.m)}</span>` : ""}</span>
-      ${d.th ? `<img class="th" src="thumbs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy" width="84" height="109">` : ""}
+      ${d.fg ? `<img class="th fig" src="figs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy">` : d.th ? `<img class="th" src="thumbs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy" width="84" height="109">` : ""}
     </a>`;
   }).join("") : `<p class="empty">No papers match. Try removing a filter.</p>`;
   $("more").hidden = r.length <= shown;
