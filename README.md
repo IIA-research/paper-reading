@@ -7,8 +7,18 @@ Each of us owns a section of the Interactive Intent Alignment literature and wri
 ## Writing a note
 
 1. Open a paper on the site.
-2. In **Write your note** (sidebar), enter your GitHub username once (your browser remembers it) and click **Write your note**.
+2. Under **Notes**, enter your GitHub username and a nickname once (your browser remembers both) and click **Write a note**.
 3. GitHub opens a new-file page named `your-username.md` with a starter template. Write in Markdown; math works with `$...$` and `$$...$$`.
+
+The file name is your GitHub username, which links the note to your account (avatar, Edit, History). The nickname is what readers see, set in the front matter at the top of the note:
+
+```markdown
+---
+name: "Your nickname"
+---
+```
+
+Your newest note's nickname is shown on all your notes, so to change it, edit it in any one note. A note without a nickname shows the GitHub username.
 4. Click **Commit changes**. The site updates within a minute or two.
 
 To change your note later, click **Edit** on it.

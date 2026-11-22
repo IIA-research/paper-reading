@@ -33,7 +33,7 @@
   {% for n in paper.notes %}
   <section class="note" id="n-{{ n.author }}">
     <div class="by">
-      <img src="https://github.com/{{ n.author }}.png?size=48" alt="" loading="lazy"><b>{{ n.author }}</b><span class="mono">{{ n.date }}</span>
+      <img src="https://github.com/{{ n.author }}.png?size=48" alt="" loading="lazy">{% if n.name %}<b>{{ n.name }}</b><a class="gh" href="https://github.com/{{ n.author }}">@{{ n.author }}</a>{% else %}<b>{{ n.author }}</b>{% endif %}<span class="mono">{{ n.date }}</span>
       {% if repo %}<span class="acts"><a href="https://github.com/{{ repo }}/edit/{{ branch }}/{{ n.path }}">Edit</a><a href="https://github.com/{{ repo }}/commits/{{ branch }}/{{ n.path }}">History</a></span>{% endif %}
     </div>
     <div class="md">{{ n.html | safe }}</div>
@@ -45,6 +45,8 @@
   <div class="add" id="write" data-repo="{{ repo }}" data-branch="{{ branch }}" data-dir="notes/{{ paper.slug }}">
     <label for="ghUser">GitHub username</label>
     <input id="ghUser" autocomplete="username" spellcheck="false" placeholder="octocat">
+    <label for="nick">Nickname</label>
+    <input id="nick" autocomplete="nickname" placeholder="Shown on your notes">
     <a class="btn" id="writeBtn" href="https://github.com/{{ repo }}/new/{{ branch }}/notes/{{ paper.slug }}">Write a note</a>
   </div>
   {% endif %}

@@ -115,17 +115,35 @@ def main():
             warnings.append(f"{f.relative_to(ROOT)}: file name must be a GitHub username, skipped")
             continue
         text = f.read_text(encoding="utf8").strip()
+        # optional front matter: ---\nname: <nickname>\n---
+        name = ""
+        fm = re.match(r"---\s*\n(.*?)\n---\s*(?:\n|$)", text, re.S)
+        if fm:
+            try:
+                meta = yaml.safe_load(fm.group(1)) or {}
+            except yaml.YAMLError:
+                meta = {}
+                warnings.append(f"{f.relative_to(ROOT)}: front matter is not valid YAML")
+            name = str(meta.get("name") or "").strip() if isinstance(meta, dict) else ""
+            text = text[fm.end():].strip()
         if not text:
             continue
         rel = f.relative_to(ROOT).as_posix()
         date = dates.get(rel) or dt.date.fromtimestamp(f.stat().st_mtime).isoformat()
         paper["notes"].append({
             "author": author,
+            "name": name,
             "html": MD.render(text),
             "date": date,
             "path": rel,
         })
+    # one nickname per GitHub user: the one in their most recent note that has one
+    nick = {}
+    for n in sorted((n for p in by_slug.values() for n in p["notes"] if n["name"]), key=lambda n: n["date"]):
+        nick[n["author"]] = n["name"]
     for p in by_slug.values():
+        for n in p["notes"]:
+            n["name"] = nick.get(n["author"], "")
         p["notes"].sort(key=lambda n: n["date"], reverse=True)
         p["last"] = p["notes"][0]["date"] if p["notes"] else ""
 
@@ -212,7 +230,7 @@ def main():
     index_data = [{
         "slug": p["slug"], "t": p["title"], "y": p.get("year") or "", "v": p.get("venue") or "",
         "s": p.get("section") or "", "ty": p.get("type") or "", "tp": p.get("topic") or "",
-        "m": p.get("summary") or "", "a": [n["author"] for n in p["notes"]], "last": p["last"],
+        "m": p.get("summary") or "", "a": [n["author"] for n in p["notes"]], "an": [n["name"] for n in p["notes"] if n["name"]], "last": p["last"],
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
         "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,

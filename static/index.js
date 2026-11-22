@@ -48,7 +48,7 @@ function writeHash(){
   history.replaceState(null, "", s ? "#" + s : location.pathname + location.search);
 }
 
-const matchesQ = d => !state.q || [d.t, d.m, d.tp, d.v, d.a.join(" ")].join(" ").toLowerCase().includes(state.q.toLowerCase());
+const matchesQ = d => !state.q || [d.t, d.m, d.tp, d.v, d.a.join(" "), (d.an || []).join(" ")].join(" ").toLowerCase().includes(state.q.toLowerCase());
 const passes = (d, skip) => { const sk = [].concat(skip ?? []); return matchesQ(d) && FACETS.every(f => sk.includes(f.k) || !state.sel[f.k].size || f.get(d).some(v => state.sel[f.k].has(v))); };
 
 // ---- build the facet panel once; later renders only update counts ----

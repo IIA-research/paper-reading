@@ -256,6 +256,8 @@ select{cursor:pointer}
 .by{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
 .by img{width:22px;height:22px;border-radius:50%;background:var(--hover)}
 .by b{font-weight:600}
+.by .gh{color:var(--muted);font-family:var(--mono);font-size:12.5px;text-decoration:none}
+.by .gh:hover{color:var(--fg);text-decoration:underline}
 .by .acts{margin-left:auto;display:flex;gap:14px;font-size:13px}
 .by .acts a{color:var(--muted)}
 .by .acts a:hover{color:var(--fg)}
