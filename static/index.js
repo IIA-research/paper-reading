@@ -95,7 +95,7 @@ function updateFacets(){
 // "EMNLP 2026 Findings" already names the year; "arXiv" does not
 const venueLabel = d => !d.v || d.v === "Unknown" ? String(d.y || "") : String(d.v).includes(String(d.y)) ? d.v : `${d.v} ${d.y}`;
 
-const venueBadge = d => d.st === "preprint" ? `<span class="vb pp">arXiv ${esc(d.y)}</span>`
+const venueBadge = d => d.st === "preprint" ? `<span class="vb pp">${esc(d.ax)}</span>`
   : `<span class="vb${d.st === "workshop" ? " ws" : ""}">${esc(d.v)}</span>`;
 
 // ---- sorting ----

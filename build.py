@@ -4,6 +4,7 @@
     python -m http.server -d _site 8000      # preview at http://localhost:8000
 """
 import collections
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 import datetime as dt
 import json
 import pathlib
@@ -95,6 +96,9 @@ def main():
         st = p.get("status") or "preprint"
         p["venue_group"] = (re.sub(r"\s*(?:19|20)\d{2}.*$", "", p.get("venue") or "").strip() or p.get("venue")) if st in ("published", "accepted") \
             else ("Workshop" if st == "workshop" else "arXiv only")
+        # arXiv ids are YYMM.NNNNN, so the first-version month is in the id (or the arxiv.org URL)
+        m = re.search(r"(?<![\d.])(\d{2})(0[1-9]|1[0-2])\.\d{4,5}", f"{p['id']} {p.get('url') or ''}")
+        p["arxiv_label"] = f"arXiv {MONTHS[int(m.group(2)) - 1]} 20{m.group(1)}" if m else f"arXiv {p.get('year') or ''}".strip()
         by_slug[p["slug"]] = p
 
     # Notes: notes/<paper slug>/<GitHub username>.md
@@ -212,7 +216,7 @@ def main():
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
         "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
-        "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"],
+        "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"], "ax": p["arxiv_label"],
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(

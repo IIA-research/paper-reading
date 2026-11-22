@@ -7,7 +7,7 @@
 
   <div class="pmeta">
     {% if paper.featured %}<span class="fbadge">★ Featured</span>{% endif %}
-    {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">arXiv {{ paper.year }}</span>{% endif %}
+    {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
     {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
   </div>
   {% if paper.thumb %}
