@@ -27,15 +27,15 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
-      # A paper gets its Figure 1 and a first-page thumbnail once someone writes a note on it.
+      # A paper gets a first-page thumbnail once someone writes a note on it.
       - name: Thumbnails for newly noted papers
         run: python scripts/make_thumbs.py
       - name: Save new thumbnails to the repo
         run: |
-          if [ -n "$(git status --porcelain thumbs figs)" ]; then
+          if [ -n "$(git status --porcelain thumbs)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add thumbs figs
+            git add thumbs
             git commit -m "Add thumbnails for newly noted papers"
             git pull --rebase && git push || echo "Could not push thumbnails; the next run will redo them."
           fi

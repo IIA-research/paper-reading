@@ -1,9 +1,4 @@
-"""Make the pictures shown in the list and on the paper page.
-
-For each paper: Figure 1 cropped from the PDF (figs/<paper id>.webp; see figure_crop.py), and a
-small image of page 1 (thumbs/<paper id>.webp), used when the paper has no Figure 1. Papers whose
-PDF has no Figure 1 are listed in figs/none.txt so they are not downloaded again. To replace a
-crop by hand, overwrite figs/<paper id>.webp; it is never regenerated once it exists.
+"""Make the first-page thumbnails shown in the list and on the paper page (thumbs/<paper id>.webp).
 
 Only papers that someone has written a note for get one, so downloads follow what the group
 actually reads. The deploy workflow runs this on every push, so a new note gets its thumbnail
@@ -13,7 +8,7 @@ automatically.
     python scripts/make_thumbs.py --all      # every arXiv paper (about 700 downloads; not needed normally)
 
 Downloads each arXiv paper's PDF (one request every 3 seconds, as arXiv asks for automated
-access), saves the two images (~10-60 KB each) and throws the PDF away. Papers that are not on arXiv are skipped. Re-running only fetches what is missing.
+access), saves a small image of page 1 (~10-30 KB) and throws the PDF away. Papers that are not on arXiv are skipped. Re-running only fetches what is missing.
 Needs: pip install pymupdf pillow
 """
 import argparse
@@ -28,13 +23,8 @@ import pymupdf as fitz
 import yaml
 from PIL import Image
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from figure_crop import find_figure, render_clip  # noqa: E402
-
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "thumbs"
-FIGS = ROOT / "figs"
-NONE = FIGS / "none.txt"
 UA = "IIA-paper-reading-thumbnails/1.0 (https://github.com/IIA-research/paper-reading)"
 DELAY = 3.0
 
@@ -61,30 +51,19 @@ def render(doc, width=300):
     return webp(page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False), 72)
 
 
-def figure(doc, width=640):
-    found = find_figure(doc)
-    return webp(render_clip(doc, *found, width), 80) if found else None
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true", help="every arXiv paper, not only noted ones")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
     OUT.mkdir(exist_ok=True)
-    FIGS.mkdir(exist_ok=True)
-    nofig = set(NONE.read_text().split()) if NONE.exists() else set()
     papers = yaml.safe_load((ROOT / "papers.yaml").read_text(encoding="utf8"))
     noted = {d.name for d in (ROOT / "notes").glob("*") if d.is_dir() and any(d.glob("*.md"))}
     pool = papers if args.all else [p for p in papers if slugify(p["id"]) in noted]
     for p in pool:
         if not arxiv_id(p):
             print(f"  skip {p['id']}: not on arXiv")
-    def missing(p):
-        slug = slugify(p["id"])
-        return not (OUT / f"{slug}.webp").exists() or (
-            not (FIGS / f"{slug}.webp").exists() and slug not in nofig)
-    todo = [p for p in pool if arxiv_id(p) and missing(p)]
+    todo = [p for p in pool if arxiv_id(p) and not (OUT / f"{slugify(p['id'])}.webp").exists()]
     if args.limit:
         todo = todo[: args.limit]
     print(f"pictures: {len(todo)} papers to fetch")
@@ -99,15 +78,7 @@ def main():
                 pdf = r.read()
             slug = slugify(p["id"])
             doc = fitz.open(stream=pdf, filetype="pdf")
-            if not (OUT / f"{slug}.webp").exists():
-                (OUT / f"{slug}.webp").write_bytes(render(doc))
-            if not (FIGS / f"{slug}.webp").exists():
-                fig = figure(doc)
-                if fig:
-                    (FIGS / f"{slug}.webp").write_bytes(fig)
-                else:
-                    nofig.add(slug)
-                    print(f"  {aid}: no Figure 1 found, page 1 is used")
+            (OUT / f"{slug}.webp").write_bytes(render(doc))
             done += 1
         except Exception as e:  # keep going; a re-run retries the failures
             failed += 1
@@ -115,7 +86,6 @@ def main():
         if i % 25 == 0:
             print(f"  {i}/{len(todo)}")
         time.sleep(DELAY)
-    NONE.write_text("".join(f"{s}\n" for s in sorted(nofig)))
     print(f"done: {done} new, {failed} failed")
 
 

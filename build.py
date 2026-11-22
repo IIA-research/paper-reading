@@ -92,7 +92,6 @@ def main():
             warnings.append(f"{p['id']}: section '{p.get('section')}' is not in site.yaml")
         p["notes"] = []
         p["thumb"] = (ROOT / "thumbs" / f"{p['slug']}.webp").exists()
-        p["fig"] = (ROOT / "figs" / f"{p['slug']}.webp").exists()
         p["featured"] = None
         # option one: papers are told apart by venue, year and kind (Benchmark vs Paper)
         p["kind"] = "Benchmark" if p.get("type") == "Benchmark" else "Paper"
@@ -241,9 +240,8 @@ def main():
     (OUT / "p").mkdir(parents=True)
     shutil.copytree(ROOT / "static", OUT / "static")
     (OUT / ".nojekyll").write_text("")
-    for d in ("thumbs", "figs"):
-        if (ROOT / d).exists():
-            shutil.copytree(ROOT / d, OUT / d, ignore=shutil.ignore_patterns("*.txt"))
+    if (ROOT / "thumbs").exists():
+        shutil.copytree(ROOT / "thumbs", OUT / "thumbs")
 
     index_data = [{
         "slug": p["slug"], "t": p["title"], "y": p.get("year") or "", "v": p.get("venue") or "",
@@ -251,7 +249,7 @@ def main():
         "m": p.get("summary") or "", "a": [n["author"] for n in p["notes"]], "an": [n["name"] for n in p["notes"] if n["name"]], "last": p["last"],
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
-        "th": p["thumb"], "fg": p["fig"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
+        "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
         "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"], "ax": p["arxiv_label"], "dm": p["dims"],
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")

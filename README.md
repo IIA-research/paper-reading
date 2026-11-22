@@ -37,9 +37,9 @@ Notes live at `notes/<paper id>/<github username>.md` — one file per person pe
   by: your-github-username
 ```
 
-## Figures and thumbnails
+## Thumbnails
 
-When a paper gets its first note, the deploy workflow downloads that paper's PDF from arXiv, crops its Figure 1 to `figs/` and saves a small image of page 1 to `thumbs/` (used when there is no Figure 1), then commits them. Only noted papers get them. If a crop looks wrong, replace `figs/<paper id>.webp` with your own image; it is never regenerated. To make them locally: `python scripts/make_thumbs.py`.
+When a paper gets its first note, the deploy workflow downloads that paper's PDF from arXiv, saves a small image of page 1 to `thumbs/` and commits it. Only noted papers get one. To make them locally: `python scripts/make_thumbs.py`.
 
 ## Commenting
 
