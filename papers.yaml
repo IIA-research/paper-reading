@@ -7194,7 +7194,7 @@
   - Text
   model: LLM
   topic: Information-gain clarification reward
-  summary: Trains LLM agents to clarify using the information gain of Bayesian belief updates as the reward, improving by 3.7% on tau-Bench augmented with clarification.
+  summary: Trains a clarifier. The same clarifier, in its current version and used only for scoring, reads the conversation so far plus the prompt "Summarize the user's hidden profile and intent based on the dialogue." Then it scores the true hidden intent text with teacher forcing (how easy the true goal text is to predict after seeing this conversation). The score is taken twice, with and without the clarifier's question and the user's answer, and the difference is the reward.
 - id: '2610.16155'
   title: Uncovering Robustness Weaknesses in LLM Agents via Persona Evolution with Task-Integrity Constraints
   url: https://arxiv.org/abs/2610.16155
