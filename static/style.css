@@ -312,3 +312,9 @@ select{cursor:pointer}
 .row .meta>span+span::before{content:none}
 .pmeta{gap:8px}
 .fcard .fmeta{gap:8px}
+
+/* survey dimensions: one hue per tag, used nowhere else on the page */
+.dm{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-style:normal;font-size:12px;font-weight:600;color:var(--fg-2);line-height:20px;white-space:nowrap}
+.dm::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--ink)}
+.dm.when{--ink:var(--blue)} .dm.what{--ink:var(--orange)} .dm.how{--ink:var(--teal)}
+.dimkey{margin-top:-6px;font-size:13.5px;color:var(--muted)} .dimkey .dm{font-size:13px;margin-right:1px}

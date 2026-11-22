@@ -9,6 +9,7 @@
       {% if paper.featured %}<span class="fbadge">★ Recommended</span>{% endif %}
       {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
       {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
+      {% for x in paper.dims %}<span class="dm {{ x | lower }}" title="{{ dim_tips[x] }}">{{ x }}</span>{% endfor %}
     </div>
     <h1>{{ paper.title }}</h1>
     {% if paper.topic %}<p class="topic">{{ paper.topic }}</p>{% endif %}

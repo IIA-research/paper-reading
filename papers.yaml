@@ -3,6 +3,7 @@
 # `status` / `venue` / `venue_source`: checked 2026-11-21 against ACL Anthology, DBLP, publisher DOIs, OpenReview,
 # Semantic Scholar and arXiv comments (scripts/venue_*.py); `venue_iia` is the original label from the IIA map.
 # `year`: year the paper first appeared (arXiv v1 or online publication), not a journal's later issue year.
+# `dims`: zero to two of When / What / How (IIA survey ch. 4-6), see docs/classification-rubric.md; LLM-drafted 2026-11-22.
 
 - id: 10.1016/j.ipm.2026.105227
   title: 'Bridging the Cognitive Gulf: User Dialogue Repair Strategies and Effectiveness in Human-AI Interaction'
@@ -15,6 +16,7 @@
   section: Understanding
   also: []
   type: User study
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -33,6 +35,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -51,6 +54,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -69,6 +73,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -88,6 +93,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -107,6 +113,7 @@
   also:
   - Training
   type: Benchmark
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -125,6 +132,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -143,6 +151,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -162,6 +171,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -181,6 +191,7 @@
   also:
   - Evaluation
   type: Survey / position
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -200,6 +211,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -220,6 +232,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -239,6 +252,7 @@
   also:
   - Training
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -258,6 +272,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -277,6 +292,7 @@
   also:
   - Reporting
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -296,6 +312,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -315,6 +332,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -334,6 +352,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -353,6 +372,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -372,6 +392,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -393,6 +414,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -412,6 +434,7 @@
   also:
   - Execution
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -431,6 +454,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -449,6 +473,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -467,6 +492,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -487,6 +513,7 @@
   also:
   - Tracking
   type: Method
+  dims: [How]
   user: Human
   training: RL
   modality:
@@ -507,6 +534,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -526,6 +554,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -547,6 +576,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -566,6 +596,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -584,6 +615,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -603,6 +635,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -621,6 +654,7 @@
   section: Reporting
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -640,6 +674,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -659,6 +694,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -678,6 +714,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: User simulator
   training: Not applicable
   modality:
@@ -697,6 +734,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -715,6 +753,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -733,6 +772,7 @@
   section: Elicitation
   also: []
   type: Analysis
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -752,6 +792,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -771,6 +812,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -790,6 +832,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -809,6 +852,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -829,6 +873,7 @@
   - Elicitation
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: RL
   modality:
@@ -847,6 +892,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -867,6 +913,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -886,6 +933,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -906,6 +954,7 @@
   also:
   - Elicitation
   type: User study
+  dims: [When]
   user: Human
   training: Not applicable
   modality:
@@ -924,6 +973,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -946,6 +996,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -964,6 +1015,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -983,6 +1035,7 @@
   also:
   - Training
   type: Benchmark
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -1001,6 +1054,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -1020,6 +1074,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1039,6 +1094,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1058,6 +1114,7 @@
   also:
   - Reporting
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1078,6 +1135,7 @@
   - Execution
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1096,6 +1154,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -1115,6 +1174,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -1135,6 +1195,7 @@
   - Tracking
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1153,6 +1214,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1172,6 +1234,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -1192,6 +1255,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1211,6 +1275,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -1230,6 +1295,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -1250,6 +1316,7 @@
   - Elicitation
   - Evaluation
   type: Survey / position
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -1270,6 +1337,7 @@
   - Elicitation
   - Tracking
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -1289,6 +1357,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1308,6 +1377,7 @@
   also:
   - Execution
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -1327,6 +1397,7 @@
   also:
   - Reporting
   type: Method
+  dims: [How]
   user: Human
   training: SFT
   modality:
@@ -1345,6 +1416,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -1363,6 +1435,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1382,6 +1455,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -1400,6 +1474,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1419,6 +1494,7 @@
   also:
   - Reporting
   type: Method
+  dims: [When]
   user: None
   training: Training-free
   modality:
@@ -1439,6 +1515,7 @@
   - Elicitation
   - Training
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Preference optimization
   modality:
@@ -1458,6 +1535,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -1476,6 +1554,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -1496,6 +1575,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -1515,6 +1595,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -1536,6 +1617,7 @@
   - Reporting
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1555,6 +1637,7 @@
   also:
   - Execution
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -1573,6 +1656,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -1592,6 +1676,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [How]
   user: User simulator
   training: Training-free
   modality:
@@ -1611,6 +1696,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: RL
   modality:
@@ -1630,6 +1716,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -1649,6 +1736,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: RL
   modality:
@@ -1669,6 +1757,7 @@
   also:
   - Training
   type: Method
+  dims: [How]
   user: User simulator
   training: RL
   modality:
@@ -1688,6 +1777,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1707,6 +1797,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -1726,6 +1817,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -1745,6 +1837,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: Human
   training: SFT
   modality:
@@ -1764,6 +1857,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -1783,6 +1877,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1803,6 +1898,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -1822,6 +1918,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -1841,6 +1938,7 @@
   also:
   - Execution
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1860,6 +1958,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1878,6 +1977,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1897,6 +1997,7 @@
   also:
   - Execution
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -1915,6 +2016,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -1935,6 +2037,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -1953,6 +2056,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -1972,6 +2076,7 @@
   also:
   - Understanding
   type: Survey / position
+  dims: [How]
   user: None
   training: Not applicable
   modality:
@@ -1991,6 +2096,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -2009,6 +2115,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -2029,6 +2136,7 @@
   - Evaluation
   - Training
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -2048,6 +2156,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -2067,6 +2176,7 @@
   also:
   - Execution
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -2085,6 +2195,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -2103,6 +2214,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -2122,6 +2234,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -2141,6 +2254,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -2160,6 +2274,7 @@
   also:
   - Execution
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -2179,6 +2294,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -2198,6 +2314,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -2217,6 +2334,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -2236,6 +2354,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -2255,6 +2374,7 @@
   also:
   - Elicitation
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -2273,6 +2393,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -2293,6 +2414,7 @@
   - Elicitation
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -2311,6 +2433,7 @@
   section: Elicitation
   also: []
   type: User study
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -2331,6 +2454,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2350,6 +2474,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2368,6 +2493,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: [When]
   user: Human
   training: Not applicable
   modality:
@@ -2388,6 +2514,7 @@
   - Training
   - Evaluation
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -2407,6 +2534,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2426,6 +2554,7 @@
   also:
   - Training
   type: Method
+  dims: [How]
   user: Human
   training: RL
   modality:
@@ -2446,6 +2575,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2465,6 +2595,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -2484,6 +2615,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -2504,6 +2636,7 @@
   - Execution
   - Evaluation
   type: Analysis
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -2523,6 +2656,7 @@
   also:
   - Tracking
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -2542,6 +2676,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -2562,6 +2697,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -2580,6 +2716,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -2600,6 +2737,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -2618,6 +2756,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -2636,6 +2775,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -2655,6 +2795,7 @@
   also:
   - Elicitation
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -2674,6 +2815,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -2694,6 +2836,7 @@
   - Evaluation
   - Execution
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2714,6 +2857,7 @@
   - Evaluation
   - Execution
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -2734,6 +2878,7 @@
   - Execution
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2754,6 +2899,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Not applicable
   modality:
@@ -2773,6 +2919,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -2792,6 +2939,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -2811,6 +2959,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -2830,6 +2979,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -2848,6 +2998,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -2867,6 +3018,7 @@
   also:
   - Execution
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -2885,6 +3037,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Unspecified
   training: Training-free
   modality:
@@ -2904,6 +3057,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -2924,6 +3078,7 @@
   - Execution
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -2943,6 +3098,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -2961,6 +3117,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -2979,6 +3136,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -2998,6 +3156,7 @@
   also:
   - Evaluation
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -3016,6 +3175,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -3034,6 +3194,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When, How]
   user: Human
   training: Training-free
   modality:
@@ -3053,6 +3214,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -3072,6 +3234,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -3090,6 +3253,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -3110,6 +3274,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -3129,6 +3294,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -3149,6 +3315,7 @@
   - Evaluation
   - Training
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -3167,6 +3334,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -3188,6 +3356,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3208,6 +3377,7 @@
   - Understanding
   - Reporting
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -3226,6 +3396,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -3245,6 +3416,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3264,6 +3436,7 @@
   also:
   - Execution
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -3283,6 +3456,7 @@
   also:
   - Elicitation
   type: User study
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3302,6 +3476,7 @@
   also:
   - Training
   type: Analysis
+  dims: [When]
   user: User simulator
   training: SFT
   modality:
@@ -3320,6 +3495,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -3339,6 +3515,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3358,6 +3535,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -3379,6 +3557,7 @@
   - Elicitation
   - Execution
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -3398,6 +3577,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -3417,6 +3597,7 @@
   also:
   - Understanding
   type: Method
+  dims: [How]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -3436,6 +3617,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3454,6 +3636,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -3473,6 +3656,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -3491,6 +3675,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -3510,6 +3695,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -3529,6 +3715,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -3548,6 +3735,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -3566,6 +3754,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -3585,6 +3774,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3603,6 +3793,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: RL
   modality:
@@ -3623,6 +3814,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -3642,6 +3834,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -3661,6 +3854,7 @@
   also:
   - Tracking
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -3681,6 +3875,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -3701,6 +3896,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -3720,6 +3916,7 @@
   also:
   - Training
   type: Method
+  dims: [How]
   user: Static dataset
   training: RL
   modality:
@@ -3738,6 +3935,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -3758,6 +3956,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Not applicable
   modality:
@@ -3778,6 +3977,7 @@
   also:
   - Elicitation
   type: User study
+  dims: [When]
   user: Human
   training: Not applicable
   modality:
@@ -3798,6 +3998,7 @@
   - Reporting
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -3817,6 +4018,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -3836,6 +4038,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -3855,6 +4058,7 @@
   also:
   - Understanding
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -3875,6 +4079,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -3895,6 +4100,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -3914,6 +4120,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -3933,6 +4140,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: User simulator
   training: SFT
   modality:
@@ -3953,6 +4161,7 @@
   - Training
   - Evaluation
   type: Analysis
+  dims: [When, How]
   user: User simulator
   training: RL
   modality:
@@ -3971,6 +4180,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -3990,6 +4200,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -4010,6 +4221,7 @@
   - Training
   - Tracking
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -4029,6 +4241,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -4048,6 +4261,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -4068,6 +4282,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4087,6 +4302,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -4107,6 +4323,7 @@
   - Execution
   - Tracking
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -4126,6 +4343,7 @@
   also:
   - Execution
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4145,6 +4363,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -4164,6 +4383,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4183,6 +4403,7 @@
   also:
   - Elicitation
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -4201,6 +4422,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -4220,6 +4442,7 @@
   also:
   - Evaluation
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -4238,6 +4461,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -4257,6 +4481,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -4276,6 +4501,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Training-free
   modality:
@@ -4294,6 +4520,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4314,6 +4541,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -4333,6 +4561,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -4352,6 +4581,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4371,6 +4601,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -4390,6 +4621,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -4409,6 +4641,7 @@
   also:
   - Reporting
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -4427,6 +4660,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -4445,6 +4679,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4463,6 +4698,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -4483,6 +4719,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4501,6 +4738,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -4519,6 +4757,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -4539,6 +4778,7 @@
   - Training
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: RL
   modality:
@@ -4557,6 +4797,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Training-free
   modality:
@@ -4575,6 +4816,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -4595,6 +4837,7 @@
   - Elicitation
   - Understanding
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -4613,6 +4856,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -4632,6 +4876,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -4651,6 +4896,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -4670,6 +4916,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -4689,6 +4936,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -4707,6 +4955,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -4725,6 +4974,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -4744,6 +4994,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -4764,6 +5015,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -4783,6 +5035,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4802,6 +5055,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Human
   training: RL
   modality:
@@ -4821,6 +5075,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4840,6 +5095,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -4858,6 +5114,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -4878,6 +5135,7 @@
   - Evaluation
   - Execution
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4896,6 +5154,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -4915,6 +5174,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -4933,6 +5193,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -4952,6 +5213,7 @@
   also:
   - Reporting
   type: Method
+  dims: [When]
   user: Human
   training: Training-free
   modality:
@@ -4972,6 +5234,7 @@
   - Elicitation
   - Evaluation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -4990,6 +5253,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -5010,6 +5274,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5030,6 +5295,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5049,6 +5315,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5071,6 +5338,7 @@
   - Reporting
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -5090,6 +5358,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -5111,6 +5380,7 @@
   - Training
   - Tracking
   type: Method
+  dims: [What, How]
   user: User simulator
   training: RL
   modality:
@@ -5130,6 +5400,7 @@
   also:
   - Execution
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -5149,6 +5420,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -5167,6 +5439,7 @@
   section: Execution
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -5186,6 +5459,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5204,6 +5478,7 @@
   section: Training
   also: []
   type: Method
+  dims: [How]
   user: User simulator
   training: Preference optimization
   modality:
@@ -5223,6 +5498,7 @@
   also:
   - Training
   type: Method
+  dims: [What, How]
   user: Human
   training: Preference optimization
   modality:
@@ -5241,6 +5517,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -5260,6 +5537,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -5280,6 +5558,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -5299,6 +5578,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -5320,6 +5600,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -5338,6 +5619,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -5357,6 +5639,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5376,6 +5659,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: []
   user: Human
   training: RL
   modality:
@@ -5394,6 +5678,7 @@
   section: Elicitation
   also: []
   type: User study
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -5413,6 +5698,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -5431,6 +5717,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -5450,6 +5737,7 @@
   also:
   - Execution
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -5468,6 +5756,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -5487,6 +5776,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -5506,6 +5796,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5526,6 +5817,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5545,6 +5837,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -5565,6 +5858,7 @@
   also:
   - Elicitation
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -5584,6 +5878,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -5605,6 +5900,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [When, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5624,6 +5920,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -5643,6 +5940,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -5662,6 +5960,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -5681,6 +5980,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -5699,6 +5999,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -5718,6 +6019,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -5737,6 +6039,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -5757,6 +6060,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: RL
   modality:
@@ -5776,6 +6080,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -5794,6 +6099,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -5813,6 +6119,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -5832,6 +6139,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -5851,6 +6159,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -5870,6 +6179,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -5889,6 +6199,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -5908,6 +6219,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -5927,6 +6239,7 @@
   also:
   - Understanding
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -5945,6 +6258,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -5964,6 +6278,7 @@
   also:
   - Understanding
   type: Method
+  dims: [How]
   user: User simulator
   training: RL
   modality:
@@ -5982,6 +6297,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6001,6 +6317,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6020,6 +6337,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -6042,6 +6360,7 @@
   - Evaluation
   - Reporting
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -6061,6 +6380,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -6079,6 +6399,7 @@
   section: Execution
   also: []
   type: Method
+  dims: [When]
   user: None
   training: Training-free
   modality:
@@ -6098,6 +6419,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -6116,6 +6438,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: [What, How]
   user: Static dataset
   training: SFT
   modality:
@@ -6135,6 +6458,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -6154,6 +6478,7 @@
   also:
   - Execution
   type: Method
+  dims: [When, How]
   user: Static dataset
   training: RL
   modality:
@@ -6174,6 +6499,7 @@
   - Tracking
   - Training
   type: Method
+  dims: [What]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -6194,6 +6520,7 @@
   - Understanding
   - Training
   type: Method
+  dims: [What]
   user: Static dataset
   training: RL
   modality:
@@ -6214,6 +6541,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -6234,6 +6562,7 @@
   - Tracking
   - Elicitation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6253,6 +6582,7 @@
   also:
   - Execution
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6273,6 +6603,7 @@
   - Elicitation
   - Execution
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6292,6 +6623,7 @@
   also:
   - Execution
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6310,6 +6642,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6329,6 +6662,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -6349,6 +6683,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -6367,6 +6702,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -6387,6 +6723,7 @@
   - Understanding
   - Elicitation
   type: Benchmark
+  dims: [When, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -6405,6 +6742,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -6425,6 +6763,7 @@
   - Training
   - Reporting
   type: Survey / position
+  dims: []
   user: None
   training: RL
   modality:
@@ -6444,6 +6783,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What, How]
   user: Static dataset
   training: SFT
   modality:
@@ -6463,6 +6803,7 @@
   section: Understanding
   also: []
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -6481,6 +6822,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -6500,6 +6842,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -6519,6 +6862,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -6538,6 +6882,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6557,6 +6902,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -6578,6 +6924,7 @@
   - Training
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: SFT
   modality:
@@ -6596,6 +6943,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -6614,6 +6962,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -6633,6 +6982,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -6652,6 +7002,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -6673,6 +7024,7 @@
   - Understanding
   - Evaluation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -6692,6 +7044,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -6713,6 +7066,7 @@
   - Tracking
   - Evaluation
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -6733,6 +7087,7 @@
   - Evaluation
   - Execution
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -6752,6 +7107,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -6771,6 +7127,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: Preference optimization
   modality:
@@ -6790,6 +7147,7 @@
   also:
   - Execution
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -6809,6 +7167,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -6828,6 +7187,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -6846,6 +7206,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -6864,6 +7225,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -6882,6 +7244,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -6900,6 +7263,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -6918,6 +7282,7 @@
   section: Elicitation
   also: []
   type: User study
+  dims: [When]
   user: Human
   training: Training-free
   modality:
@@ -6937,6 +7302,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -6955,6 +7321,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -6973,6 +7340,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -6991,6 +7359,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -7009,6 +7378,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -7027,6 +7397,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -7046,6 +7417,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -7064,6 +7436,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -7083,6 +7456,7 @@
   also:
   - Elicitation
   type: Survey / position
+  dims: [When, What]
   user: None
   training: Not applicable
   modality:
@@ -7103,6 +7477,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Not applicable
   modality:
@@ -7122,6 +7497,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -7140,6 +7516,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -7159,6 +7536,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -7177,6 +7555,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: None
   training: Training-free
   modality:
@@ -7195,6 +7574,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7214,6 +7594,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -7233,6 +7614,7 @@
   also:
   - Tracking
   type: Method
+  dims: [When, How]
   user: Static dataset
   training: SFT
   modality:
@@ -7253,6 +7635,7 @@
   - Training
   - Evaluation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -7272,6 +7655,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -7292,6 +7676,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -7312,6 +7697,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -7330,6 +7716,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When, How]
   user: User simulator
   training: Training-free
   modality:
@@ -7348,6 +7735,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -7367,6 +7755,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7387,6 +7776,7 @@
   - Evaluation
   - Execution
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -7407,6 +7797,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -7426,6 +7817,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -7444,6 +7836,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -7464,6 +7857,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Not applicable
   modality:
@@ -7482,6 +7876,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -7501,6 +7896,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7520,6 +7916,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7538,6 +7935,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -7556,6 +7954,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -7575,6 +7974,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -7593,6 +7993,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -7612,6 +8013,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7630,6 +8032,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -7648,6 +8051,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -7669,6 +8073,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -7689,6 +8094,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -7708,6 +8114,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -7728,6 +8135,7 @@
   - Training
   - Evaluation
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -7748,6 +8156,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -7766,6 +8175,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -7784,6 +8194,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -7803,6 +8214,7 @@
   also:
   - Elicitation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -7821,6 +8233,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -7840,6 +8253,7 @@
   also:
   - Execution
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7859,6 +8273,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -7878,6 +8293,7 @@
   also:
   - Reporting
   type: Analysis
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -7896,6 +8312,7 @@
   section: Execution
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -7915,6 +8332,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -7935,6 +8353,7 @@
   - Elicitation
   - Training
   type: Method
+  dims: [What]
   user: Human
   training: SFT
   modality:
@@ -7956,6 +8375,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -7975,6 +8395,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -7994,6 +8415,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8013,6 +8435,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -8031,6 +8454,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8051,6 +8475,7 @@
   - Evaluation
   - Training
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -8070,6 +8495,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8091,6 +8517,7 @@
   - Elicitation
   - Tracking
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -8110,6 +8537,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -8129,6 +8557,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8148,6 +8577,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: SFT
   modality:
@@ -8167,6 +8597,7 @@
   also:
   - Execution
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8186,6 +8617,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -8205,6 +8637,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -8224,6 +8657,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -8242,6 +8676,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -8261,6 +8696,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -8280,6 +8716,7 @@
   also:
   - Execution
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8298,6 +8735,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8318,6 +8756,7 @@
   - Elicitation
   - Evaluation
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -8338,6 +8777,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -8356,6 +8796,7 @@
   section: Evaluation
   also: []
   type: Survey / position
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -8374,6 +8815,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8392,6 +8834,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -8410,6 +8853,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -8428,6 +8872,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -8446,6 +8891,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8466,6 +8912,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8485,6 +8932,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: Human
   training: SFT
   modality:
@@ -8504,6 +8952,7 @@
   also:
   - Execution
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -8523,6 +8972,7 @@
   also:
   - Execution
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Training-free
   modality:
@@ -8541,6 +8991,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -8561,6 +9012,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -8581,6 +9033,7 @@
   - Execution
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8600,6 +9053,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -8618,6 +9072,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -8636,6 +9091,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -8656,6 +9112,7 @@
   - Understanding
   - Elicitation
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -8674,6 +9131,7 @@
   section: Execution
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -8693,6 +9151,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -8711,6 +9170,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8729,6 +9189,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -8747,6 +9208,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [How]
   user: User simulator
   training: Training-free
   modality:
@@ -8766,6 +9228,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -8784,6 +9247,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8803,6 +9267,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Training-free
   modality:
@@ -8822,6 +9287,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -8840,6 +9306,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: RL
   modality:
@@ -8859,6 +9326,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: SFT
   modality:
@@ -8878,6 +9346,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: RL
   modality:
@@ -8897,6 +9366,7 @@
   also:
   - Training
   type: Method
+  dims: [When, What]
   user: User simulator
   training: RL
   modality:
@@ -8918,6 +9388,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -8936,6 +9407,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -8954,6 +9426,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -8972,6 +9445,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -8991,6 +9465,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -9009,6 +9484,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -9028,6 +9504,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -9047,6 +9524,7 @@
   also:
   - Execution
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -9065,6 +9543,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: RL
   modality:
@@ -9084,6 +9563,7 @@
   also:
   - Reporting
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -9102,6 +9582,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: SFT
   modality:
@@ -9123,6 +9604,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -9141,6 +9623,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -9161,6 +9644,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -9182,6 +9666,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -9201,6 +9686,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -9220,6 +9706,7 @@
   also:
   - Training
   type: Analysis
+  dims: []
   user: Human
   training: RL
   modality:
@@ -9239,6 +9726,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -9258,6 +9746,7 @@
   also:
   - Training
   type: Method
+  dims: [When, How]
   user: User simulator
   training: RL
   modality:
@@ -9276,6 +9765,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -9295,6 +9785,7 @@
   also:
   - Execution
   type: Method
+  dims: [What, How]
   user: None
   training: Training-free
   modality:
@@ -9314,6 +9805,7 @@
   also:
   - Evaluation
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -9333,6 +9825,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -9352,6 +9845,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [How]
   user: User simulator
   training: Training-free
   modality:
@@ -9372,6 +9866,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -9391,6 +9886,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -9412,6 +9908,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -9430,6 +9927,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -9450,6 +9948,7 @@
   - Training
   - Elicitation
   type: Method
+  dims: [When]
   user: Static dataset
   training: RL
   modality:
@@ -9469,6 +9968,7 @@
   also:
   - Tracking
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -9489,6 +9989,7 @@
   - Evaluation
   - Understanding
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -9508,6 +10009,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -9529,6 +10031,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -9547,6 +10050,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -9566,6 +10070,7 @@
   also:
   - Training
   type: Analysis
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -9584,6 +10089,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -9603,6 +10109,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -9622,6 +10129,7 @@
   also:
   - Tracking
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -9642,6 +10150,7 @@
   - Training
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: RL
   modality:
@@ -9660,6 +10169,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -9678,6 +10188,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -9696,6 +10207,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -9714,6 +10226,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -9732,6 +10245,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -9752,6 +10266,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Not applicable
   modality:
@@ -9770,6 +10285,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -9789,6 +10305,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -9809,6 +10326,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -9827,6 +10345,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [What, How]
   user: Static dataset
   training: Training-free
   modality:
@@ -9847,6 +10366,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -9866,6 +10386,7 @@
   also:
   - Training
   type: Method
+  dims: [What, How]
   user: Static dataset
   training: RL
   modality:
@@ -9886,6 +10407,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -9904,6 +10426,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: [How]
   user: User simulator
   training: Not applicable
   modality:
@@ -9923,6 +10446,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -9941,6 +10465,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: RL
   modality:
@@ -9960,6 +10485,7 @@
   also:
   - Elicitation
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -9979,6 +10505,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -9997,6 +10524,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10016,6 +10544,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -10034,6 +10563,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -10053,6 +10583,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -10072,6 +10603,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -10092,6 +10624,7 @@
   - Understanding
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -10111,6 +10644,7 @@
   also:
   - Evaluation
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -10129,6 +10663,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10149,6 +10684,7 @@
   - Elicitation
   - Training
   type: Method
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -10168,6 +10704,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -10188,6 +10725,7 @@
   - Training
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -10207,6 +10745,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10226,6 +10765,7 @@
   also:
   - Execution
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -10245,6 +10785,7 @@
   also:
   - Understanding
   type: Method
+  dims: [How]
   user: Human
   training: RL
   modality:
@@ -10263,6 +10804,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10281,6 +10823,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10299,6 +10842,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10318,6 +10862,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -10336,6 +10881,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -10355,6 +10901,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -10374,6 +10921,7 @@
   also:
   - Understanding
   type: User study
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -10393,6 +10941,7 @@
   also:
   - Training
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10413,6 +10962,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -10433,6 +10983,7 @@
   - Elicitation
   - Evaluation
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -10452,6 +11003,7 @@
   also:
   - Understanding
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -10470,6 +11022,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10488,6 +11041,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -10507,6 +11061,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -10526,6 +11081,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: Human
   training: Training-free
   modality:
@@ -10545,6 +11101,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -10563,6 +11120,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10582,6 +11140,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -10600,6 +11159,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -10618,6 +11178,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10636,6 +11197,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10654,6 +11216,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10672,6 +11235,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -10691,6 +11255,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -10710,6 +11275,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -10730,6 +11296,7 @@
   also:
   - Training
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10748,6 +11315,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -10768,6 +11336,7 @@
   - Elicitation
   - Training
   type: Method
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -10787,6 +11356,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -10806,6 +11376,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, How]
   user: Static dataset
   training: SFT
   modality:
@@ -10825,6 +11396,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: Static dataset
   training: SFT
   modality:
@@ -10844,6 +11416,7 @@
   section: Elicitation
   also: []
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -10863,6 +11436,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -10881,6 +11455,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -10901,6 +11476,7 @@
   - Elicitation
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -10919,6 +11495,7 @@
   section: Elicitation
   also: []
   type: Analysis
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -10938,6 +11515,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -10957,6 +11535,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -10976,6 +11555,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -10994,6 +11574,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11013,6 +11594,7 @@
   also:
   - Understanding
   type: Method
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11032,6 +11614,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -11050,6 +11633,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -11069,6 +11653,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11087,6 +11672,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11105,6 +11691,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11123,6 +11710,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -11141,6 +11729,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11160,6 +11749,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11178,6 +11768,7 @@
   section: Elicitation
   also: []
   type: User study
+  dims: [What]
   user: Human
   training: Training-free
   modality:
@@ -11196,6 +11787,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -11214,6 +11806,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11232,6 +11825,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11250,6 +11844,7 @@
   section: Evaluation
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -11270,6 +11865,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Not applicable
   modality:
@@ -11289,6 +11885,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [How]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11308,6 +11905,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: SFT
   modality:
@@ -11328,6 +11926,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -11347,6 +11946,7 @@
   section: Evaluation
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -11366,6 +11966,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -11385,6 +11986,7 @@
   section: Reporting
   also: []
   type: Analysis
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11404,6 +12006,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11423,6 +12026,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: Preference optimization
   modality:
@@ -11443,6 +12047,7 @@
   - Understanding
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -11462,6 +12067,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: Preference optimization
   modality:
@@ -11481,6 +12087,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Human
   training: RL
   modality:
@@ -11500,6 +12107,7 @@
   also:
   - Reporting
   type: User study
+  dims: [How]
   user: Human
   training: Training-free
   modality:
@@ -11520,6 +12128,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -11538,6 +12147,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -11559,6 +12169,7 @@
   - Elicitation
   - Evaluation
   type: Method
+  dims: [When]
   user: Static dataset
   training: RL
   modality:
@@ -11579,6 +12190,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11597,6 +12209,7 @@
   section: Execution
   also: []
   type: Analysis
+  dims: []
   user: User simulator
   training: Training-free
   modality:
@@ -11616,6 +12229,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -11635,6 +12249,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: User simulator
   training: Preference optimization
   modality:
@@ -11653,6 +12268,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -11672,6 +12288,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -11691,6 +12308,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -11709,6 +12327,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -11727,6 +12346,7 @@
   section: Training
   also: []
   type: Analysis
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -11746,6 +12366,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -11765,6 +12386,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Training-free
   modality:
@@ -11783,6 +12405,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -11802,6 +12425,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11820,6 +12444,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -11839,6 +12464,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11857,6 +12483,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -11877,6 +12504,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -11897,6 +12525,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -11916,6 +12545,7 @@
   also:
   - Understanding
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -11936,6 +12566,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -11955,6 +12586,7 @@
   section: Training
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: RL
   modality:
@@ -11974,6 +12606,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -11993,6 +12626,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -12013,6 +12647,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -12034,6 +12669,7 @@
   - Training
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: User simulator
   training: SFT
   modality:
@@ -12053,6 +12689,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -12072,6 +12709,7 @@
   also:
   - Reporting
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12090,6 +12728,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12108,6 +12747,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -12126,6 +12766,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: SFT
   modality:
@@ -12145,6 +12786,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -12163,6 +12805,7 @@
   section: Understanding
   also: []
   type: User study
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -12181,6 +12824,7 @@
   section: Evaluation
   also: []
   type: User study
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -12200,6 +12844,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -12218,6 +12863,7 @@
   section: Training
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: Preference optimization
   modality:
@@ -12236,6 +12882,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -12255,6 +12902,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -12274,6 +12922,7 @@
   also:
   - Evaluation
   type: Survey / position
+  dims: [When, What]
   user: None
   training: Not applicable
   modality:
@@ -12292,6 +12941,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12310,6 +12960,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: User simulator
   training: Training-free
   modality:
@@ -12330,6 +12981,7 @@
   - Evaluation
   - Training
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -12348,6 +13000,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12367,6 +13020,7 @@
   also:
   - Execution
   type: Method
+  dims: [When]
   user: User simulator
   training: SFT
   modality:
@@ -12388,6 +13042,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When, What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -12407,6 +13062,7 @@
   also:
   - Understanding
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -12425,6 +13081,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -12444,6 +13101,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: [What]
   user: User simulator
   training: Not applicable
   modality:
@@ -12463,6 +13121,7 @@
   also:
   - Execution
   type: Method
+  dims: [What]
   user: User simulator
   training: SFT
   modality:
@@ -12483,6 +13142,7 @@
   also:
   - Training
   type: Method
+  dims: [How]
   user: User simulator
   training: RL
   modality:
@@ -12502,6 +13162,7 @@
   also:
   - Evaluation
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Training-free
   modality:
@@ -12523,6 +13184,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When, What]
   user: Static dataset
   training: Training-free
   modality:
@@ -12541,6 +13203,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When]
   user: Human
   training: Training-free
   modality:
@@ -12559,6 +13222,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12577,6 +13241,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -12595,6 +13260,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12614,6 +13280,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: Human
   training: Not applicable
   modality:
@@ -12633,6 +13300,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -12651,6 +13319,7 @@
   section: Tracking
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12669,6 +13338,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12687,6 +13357,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: Human
   training: Training-free
   modality:
@@ -12706,6 +13377,7 @@
   also:
   - Evaluation
   type: Analysis
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -12724,6 +13396,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12743,6 +13416,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -12761,6 +13435,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -12780,6 +13455,7 @@
   also:
   - Understanding
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -12798,6 +13474,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12817,6 +13494,7 @@
   also:
   - Evaluation
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12835,6 +13513,7 @@
   section: Reporting
   also: []
   type: Survey / position
+  dims: []
   user: None
   training: Not applicable
   modality:
@@ -12853,6 +13532,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [When, What]
   user: User simulator
   training: Training-free
   modality:
@@ -12871,6 +13551,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12889,6 +13570,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -12908,6 +13590,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What, How]
   user: Static dataset
   training: SFT
   modality:
@@ -12926,6 +13609,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -12944,6 +13628,7 @@
   section: Training
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -12962,6 +13647,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: RL
   modality:
@@ -12980,6 +13666,7 @@
   section: Training
   also: []
   type: Method
+  dims: [How]
   user: Static dataset
   training: SFT
   modality:
@@ -13000,6 +13687,7 @@
   - Evaluation
   - Elicitation
   type: Benchmark
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -13018,6 +13706,7 @@
   section: Evaluation
   also: []
   type: Benchmark
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -13038,6 +13727,7 @@
   - Tracking
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13057,6 +13747,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Static dataset
   training: Preference optimization
   modality:
@@ -13075,6 +13766,7 @@
   section: Training
   also: []
   type: Method
+  dims: []
   user: Static dataset
   training: SFT
   modality:
@@ -13095,6 +13787,7 @@
   - Evaluation
   - Training
   type: Benchmark
+  dims: [What]
   user: User simulator
   training: RL
   modality:
@@ -13114,6 +13807,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -13133,6 +13827,7 @@
   also:
   - Reporting
   type: Method
+  dims: [How]
   user: Static dataset
   training: Training-free
   modality:
@@ -13152,6 +13847,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When]
   user: Human
   training: Training-free
   modality:
@@ -13171,6 +13867,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [When]
   user: Static dataset
   training: Training-free
   modality:
@@ -13189,6 +13886,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Training-free
   modality:
@@ -13208,6 +13906,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13226,6 +13925,7 @@
   section: Reporting
   also: []
   type: Method
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13245,6 +13945,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: SFT
   modality:
@@ -13263,6 +13964,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Static dataset
   training: Training-free
   modality:
@@ -13282,6 +13984,7 @@
   also:
   - Elicitation
   type: Method
+  dims: [What]
   user: Human
   training: RL
   modality:
@@ -13301,6 +14004,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13319,6 +14023,7 @@
   section: Evaluation
   also: []
   type: User study
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13338,6 +14043,7 @@
   also:
   - Understanding
   type: Method
+  dims: [When]
   user: User simulator
   training: Training-free
   modality:
@@ -13357,6 +14063,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: Human
   training: RL
   modality:
@@ -13376,6 +14083,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [When]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13394,6 +14102,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13412,6 +14121,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13430,6 +14140,7 @@
   section: Tracking
   also: []
   type: Method
+  dims: []
   user: User simulator
   training: RL
   modality:
@@ -13449,6 +14160,7 @@
   also:
   - Reporting
   type: Benchmark
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13468,6 +14180,7 @@
   also:
   - Elicitation
   type: Method
+  dims: []
   user: User simulator
   training: Not applicable
   modality:
@@ -13486,6 +14199,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [How]
   user: User simulator
   training: Training-free
   modality:
@@ -13504,6 +14218,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What, How]
   user: User simulator
   training: Training-free
   modality:
@@ -13523,6 +14238,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13542,6 +14258,7 @@
   also:
   - Training
   type: Method
+  dims: []
   user: Human
   training: SFT
   modality:
@@ -13560,6 +14277,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13578,6 +14296,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -13596,6 +14315,7 @@
   section: Understanding
   also: []
   type: Analysis
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13614,6 +14334,7 @@
   section: Elicitation
   also: []
   type: Survey / position
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -13633,6 +14354,7 @@
   also:
   - Training
   type: Method
+  dims: [When]
   user: User simulator
   training: RL
   modality:
@@ -13651,6 +14373,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13670,6 +14393,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -13688,6 +14412,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13707,6 +14432,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13726,6 +14452,7 @@
   also:
   - Evaluation
   type: User study
+  dims: [When]
   user: Human
   training: Not applicable
   modality:
@@ -13744,6 +14471,7 @@
   section: Elicitation
   also: []
   type: User study
+  dims: [What, How]
   user: Human
   training: SFT
   modality:
@@ -13763,6 +14491,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: []
   user: Static dataset
   training: Not applicable
   modality:
@@ -13782,6 +14511,7 @@
   also:
   - Elicitation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13800,6 +14530,7 @@
   section: Reporting
   also: []
   type: User study
+  dims: []
   user: Human
   training: Not applicable
   modality:
@@ -13818,6 +14549,7 @@
   section: Elicitation
   also: []
   type: Method
+  dims: [What]
   user: Human
   training: RL
   modality:
@@ -13837,6 +14569,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: Not applicable
   modality:
@@ -13856,6 +14589,7 @@
   also:
   - Evaluation
   type: Benchmark
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -13875,6 +14609,7 @@
   also:
   - Training
   type: Method
+  dims: [What]
   user: Static dataset
   training: SFT
   modality:
@@ -13893,6 +14628,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -13912,6 +14648,7 @@
   also:
   - Reporting
   type: Survey / position
+  dims: [When]
   user: None
   training: Not applicable
   modality:
@@ -13930,6 +14667,7 @@
   section: Understanding
   also: []
   type: Method
+  dims: [How]
   user: Human
   training: Not applicable
   modality:
@@ -13948,6 +14686,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -13966,6 +14705,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -13984,6 +14724,7 @@
   section: Understanding
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -14002,6 +14743,7 @@
   section: Tracking
   also: []
   type: Survey / position
+  dims: [What]
   user: None
   training: Not applicable
   modality:
@@ -14021,6 +14763,7 @@
   also:
   - Elicitation
   type: Survey / position
+  dims: [What]
   user: Human
   training: Not applicable
   modality:

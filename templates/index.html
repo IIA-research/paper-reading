@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 <p class="intro"><b>{{ stats.papers }}</b> papers on interactive intent alignment: <b>{{ stats.accepted }}</b> accepted at a conference or journal, {{ stats.workshop }} at workshops, {{ stats.preprint }} on arXiv only (venues checked on {{ built }}). <a href="recommended.html">{{ picks | length }} are recommended</a> as a starting point.</p>
+<p class="intro dimkey">Tags follow the IIA survey: <span class="dm when">When</span> the agent should step in, <span class="dm what">What</span> part of the user's intent is missing, and <span class="dm how">How</span> the gap is resolved. A paper can have one or two tags, or none. Tags are drafted by an LLM from each paper's title and summary{% if repo %} (<a href="https://github.com/{{ repo }}/blob/main/docs/classification-rubric.md">rubric</a>){% endif %} and may be wrong; say so in the paper's discussion.</p>
 
 <div class="browse">
   <aside class="facets" id="facets" aria-label="Filters">

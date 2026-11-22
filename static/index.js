@@ -17,6 +17,7 @@ const FACETS = [
   {k: "ac", name: "Accepted?", get: d => [STATUS[d.st] || "arXiv only"], order: ["Accepted", "Workshop", "arXiv only"]},
   {k: "va", name: "Venue",     get: d => STATUS[d.st] === "Accepted" ? [d.va] : []},
   {k: "y",  name: "Year",      get: d => [yearBin(d)], sortBy: "value"},
+  {k: "dm", name: "When / What / How", get: d => d.dm.length ? d.dm : ["Untagged"], order: ["When", "What", "How", "Untagged"]},
   {k: "kd", name: "Type",      get: d => [d.k], order: ["Paper", "Benchmark"]},
   {k: "ft", name: "Recommended", get: d => [d.f ? "Recommended" : "Not recommended"], order: ["Recommended", "Not recommended"]},
   {k: "nt", name: "Notes",     get: d => [d.a.length ? "Has notes" : "No notes yet"]},
@@ -95,6 +96,8 @@ function updateFacets(){
 // "EMNLP 2026 Findings" already names the year; "arXiv" does not
 const venueLabel = d => !d.v || d.v === "Unknown" ? String(d.y || "") : String(d.v).includes(String(d.y)) ? d.v : `${d.v} ${d.y}`;
 
+const DIM_TIP = {When: "When to step in", What: "Which part of the intent is missing", How: "How the gap is resolved"};
+const dimTags = d => d.dm.map(x => `<span class="dm ${x.toLowerCase()}" title="${DIM_TIP[x]}">${x}</span>`).join("");
 const venueBadge = d => d.st === "preprint" ? `<span class="vb pp">${esc(d.ax)}</span>`
   : `<span class="vb${d.st === "workshop" ? " ws" : ""}">${esc(d.v)}</span>`;
 
@@ -135,7 +138,7 @@ function render(){
     if (byYear && d.y !== lastY) { lastY = d.y; head = `<div class="yh"><span>${esc(d.y)}</span><span class="mono">${ycount[d.y]} paper${ycount[d.y] === 1 ? "" : "s"}</span></div>`; }
     return head + `<a class="row" href="p/${encodeURIComponent(d.slug)}/index.html">
       <span class="mid"><span class="t">${esc(d.t)}</span>
-        <span class="meta">${venueBadge(d)}${d.k === "Benchmark" ? `<span class="bm">Benchmark</span>` : ""}${d.f ? `<span class="fe">★ Recommended</span>` : ""}${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
+        <span class="meta">${venueBadge(d)}${d.k === "Benchmark" ? `<span class="bm">Benchmark</span>` : ""}${dimTags(d)}${d.f ? `<span class="fe">★ Recommended</span>` : ""}${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
         ${d.m ? `<span class="s">${esc(d.m)}</span>` : ""}</span>
       ${d.fg ? `<img class="th fig" src="figs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy">` : d.th ? `<img class="th" src="thumbs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy" width="84" height="109">` : ""}
     </a>`;

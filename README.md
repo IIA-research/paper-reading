@@ -47,6 +47,7 @@ The bottom of every paper page is a comment thread. Sign in with GitHub to comme
 
 - **Sections and owners**: `sections` in `site.yaml`; put owners' GitHub usernames under `owners`.
 - **Papers**: `papers.yaml`, one entry per paper. Don't change `id` — note folders and comment threads are keyed on it. `section` must match a section `key` in `site.yaml`.
+- **When / What / How tags**: `dims` in `papers.yaml`, zero to two per paper, following the IIA survey's chapters 4–6. Definitions and tie-breakers are in [docs/classification-rubric.md](docs/classification-rubric.md). The current tags are LLM drafts; fix a wrong one by editing `dims` in a pull request.
 - The initial list was imported from the IIA literature map (out-of-scope papers skipped) with `scripts/import_iia.py`.
 
 ## Local preview

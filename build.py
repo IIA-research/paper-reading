@@ -4,6 +4,7 @@
     python -m http.server -d _site 8000      # preview at http://localhost:8000
 """
 import collections
+DIMS = ("When", "What", "How")
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 import datetime as dt
 import json
@@ -94,6 +95,11 @@ def main():
         p["featured"] = None
         # option one: papers are told apart by venue, year and kind (Benchmark vs Paper)
         p["kind"] = "Benchmark" if p.get("type") == "Benchmark" else "Paper"
+        # survey dimensions (docs/classification-rubric.md): zero to two of When / What / How
+        bad = [d for d in (p.get("dims") or []) if d not in DIMS]
+        if bad:
+            errors.append(f"{p['id']}: unknown dims {bad}; use {list(DIMS)}")
+        p["dims"] = [d for d in DIMS if d in (p.get("dims") or [])]
         st = p.get("status") or "preprint"
         p["venue_group"] = (re.sub(r"\s*(?:19|20)\d{2}.*$", "", p.get("venue") or "").strip() or p.get("venue")) if st in ("published", "accepted") \
             else ("Workshop" if st == "workshop" else "arXiv only")
@@ -217,6 +223,7 @@ def main():
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
     common = {"site": site, "repo": repo, "branch": branch, "sections": sections, "sec_by_key": sec_by_key,
               "n_featured": len(picks),
+              "dim_tips": {"When": "When to step in", "What": "Which part of the intent is missing", "How": "How the gap is resolved"},
               "giscus": giscus, "built": dt.date.today().isoformat(),
               "v": dt.datetime.now().strftime("%Y%m%d%H%M%S")}
 
@@ -236,7 +243,7 @@ def main():
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
         "th": p["thumb"], "fg": p["fig"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
-        "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"], "ax": p["arxiv_label"],
+        "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"], "ax": p["arxiv_label"], "dm": p["dims"],
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(
