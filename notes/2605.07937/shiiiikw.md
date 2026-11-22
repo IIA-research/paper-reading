@@ -2,4 +2,6 @@
 name: "Kevin"
 ---
 
-Ask Early, Ask Late, Ask Right研究长程任务中，澄清信息的价值如何随着不同的发问时机和缺失信息类型变化。它在强制注入实验中禁用主动求助，以完整信息运行的平均动作数为基准，在10%、30%、50%、70%、90%处注入相同的缺失信息，比较任务成功率和无效动作。benchmark沿用LHAW对MCP-Atlas、TheAgentCompany和SWE-Bench Pro的改造，通过删除目标、输入、约束或背景信息形成不完整任务。baseline包括GPT-5.2、Claude Sonnet 4.5、Gemini 3 Flash和DeepSeek V3.2四个base，设置Oracle、No-clarification及五种固定注入时机。
+Ask Early, Ask Late, Ask Right studies how the value of clarification in a long-horizon task depends on when the agent receives it and what kind of information is missing. In the controlled timing experiment, agents cannot ask for help on their own. The authors take the average number of actions needed with full information as a reference. In separate runs, they supply the same missing information at 10%, 30%, 50%, 70%, or 90% of that action count, then compare task success and wasted actions.
+
+The benchmark uses LHAW's adaptations of MCP-Atlas, TheAgentCompany, and SWE-Bench Pro. The tasks are made incomplete by removing a goal, input, constraint, or piece of background information. The authors evaluate GPT-5.2, Claude Sonnet 4.5, Gemini 3 Flash, and DeepSeek V3.2 under the Oracle and No-clarification conditions and at each of the five fixed timings.

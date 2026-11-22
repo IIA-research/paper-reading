@@ -2,4 +2,8 @@
 name: "Kevin"
 ---
 
-Clarify When Necessary研究提问次数有限时，LLM应该优先澄清哪些请求，重点识别“不问会答错、问清后能够答对”的情况。它提出无需训练的Intent-Sim：让模型先生成一个澄清问题，再模拟10个可能的用户回复，用另一个模型把意思相同的回复归组，根据各组的比例计算熵，优先询问存在多种可能意图的请求。benchmark使用AmbigQA问答、AmbiEnt自然语言推断和DiscourseMT英法翻译，利用已有标注确定用户意图，其中翻译任务去掉前文来制造歧义。正式评测时，使用GPT-3.5根据标注意图预生成的澄清问答，获得对应的答案后再完成任务。被测模型为GPT-3和Llama-2-Chat 7B/13B，baseline在相同提问预算下比较random select、answer Likelihood、让模型判断“这里是否需要追问”的Self-Ask，以及对多次直接回答归组计算熵的Sample Entropy，完全不澄清、全部澄清和直接提供消歧输入，结果表明Intent-Sim在多数设置下更能挑出澄清后会改善答案的请求。
+Clarify When Necessary asks which requests an LLM should clarify when it has a limited question budget. The cases of interest are those the model would answer incorrectly on its own but correctly after clarification. The training-free Intent-Sim method generates a clarifying question and simulates ten possible user replies. Another model groups replies with the same meaning. Intent-Sim computes entropy from the groups' relative frequencies and prioritizes requests with several plausible interpretations.
+
+The benchmark covers AmbigQA question answering, AmbiEnt natural language inference, and English-to-French translation on DiscourseMT. Existing annotations specify the user's intent. For translation, removing the preceding context creates ambiguity. For the evaluation itself, GPT-3.5 generates clarification questions and replies in advance using the annotated intent. The model receives the corresponding reply before completing a request it has chosen to clarify.
+
+The authors evaluate GPT-3 and Llama-2-Chat 7B/13B. Under the same question budget, they compare random selection, answer likelihood, Self-Ask (asking the model whether clarification is needed), and Sample Entropy (grouping multiple direct answers and computing their entropy). They also test clarifying no requests, clarifying all requests, and supplying disambiguated inputs directly. In most settings, Intent-Sim is better at picking requests whose answers improve after clarification.
