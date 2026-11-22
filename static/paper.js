@@ -1,4 +1,17 @@
 (() => {
+// EN / 中文 switch on notes that have both; one choice applies to every note and is remembered
+function setLang(l){
+  document.querySelectorAll(".note").forEach(n => {
+    if (!n.querySelector(`.lang button[data-l="${l}"]`)) return;
+    n.querySelectorAll("[data-l]").forEach(e => { if (e.tagName === "BUTTON") e.setAttribute("aria-pressed", e.dataset.l === l); else e.hidden = e.dataset.l !== l; });
+  });
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".lang button"); if (!b) return;
+  setLang(b.dataset.l); try { localStorage.setItem("noteLang", b.dataset.l); } catch (err) {}
+});
+try { const l = localStorage.getItem("noteLang"); if (l) setLang(l); } catch (e) {}
+
 // "Write a note": GitHub new-file page with filename = username and a starter template
 const w = document.getElementById("write");
 if (w) {

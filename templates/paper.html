@@ -35,9 +35,10 @@
   <section class="note" id="n-{{ n.author }}">
     <div class="by">
       <img src="https://github.com/{{ n.author }}.png?size=48" alt="" loading="lazy">{% if n.name %}<b>{{ n.name }}</b><a class="gh" href="https://github.com/{{ n.author }}">@{{ n.author }}</a>{% else %}<b>{{ n.author }}</b>{% endif %}<span class="mono">{{ n.date }}</span>
-      {% if repo %}<span class="acts"><a href="https://github.com/{{ repo }}/edit/{{ branch }}/{{ n.path }}">Edit</a><a href="https://github.com/{{ repo }}/commits/{{ branch }}/{{ n.path }}">History</a></span>{% endif %}
+      {% if n.langs | length > 1 %}<span class="lang" role="group" aria-label="Language">{% for l in n.langs %}<button type="button" data-l="{{ l }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ lang_names[l] }}</button>{% endfor %}</span>{% elif n.langs[0] != "en" %}<span class="lang only">{{ lang_names[n.langs[0]] }}</span>{% endif %}
+      {% if repo %}<span class="acts">{% for l in n.langs %}<a href="https://github.com/{{ repo }}/edit/{{ branch }}/{{ n.versions[l].path }}" data-l="{{ l }}"{% if not loop.first %} hidden{% endif %}>Edit</a>{% endfor %}<a href="https://github.com/{{ repo }}/commits/{{ branch }}/notes/{{ paper.slug }}">History</a></span>{% endif %}
     </div>
-    <div class="md">{{ n.html | safe }}</div>
+    {% for l in n.langs %}<div class="md" data-l="{{ l }}" lang="{{ 'zh-Hans' if l == 'zh' else l }}"{% if not loop.first %} hidden{% endif %}>{{ n.versions[l].html | safe }}</div>{% endfor %}
   </section>
   {% else %}
   <p class="none">No notes yet.</p>

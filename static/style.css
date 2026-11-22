@@ -318,3 +318,12 @@ select{cursor:pointer}
 .dm::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--ink)}
 .dm.when{--ink:var(--blue)} .dm.what{--ink:var(--orange)} .dm.how{--ink:var(--teal)}
 .dimkey{margin-top:-6px;font-size:13.5px;color:var(--muted)} .dimkey .dm{font-size:13px;margin-right:1px}
+
+/* EN / 中文 switch on a note */
+.by .lang{display:inline-flex;border:1px solid var(--rule-strong);border-radius:4px;overflow:hidden;font-size:12px;line-height:20px}
+.by .lang button{font:inherit;font-weight:500;color:var(--muted);background:transparent;border:0;padding:0 8px;cursor:pointer}
+.by .lang button+button{border-left:1px solid var(--rule-strong)}
+.by .lang button[aria-pressed="true"]{color:var(--fg);background:var(--hover);font-weight:600}
+.by .lang.only{padding:0 7px;color:var(--muted)}
+.md:lang(zh-Hans){line-height:1.8}
+.md:lang(zh-Hans) pre{line-height:1.6}

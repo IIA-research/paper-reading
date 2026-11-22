@@ -25,6 +25,8 @@ To change your note later, click **Edit** on it.
 
 Notes live at `notes/<paper id>/<github username>.md` — one file per person per paper, so nobody overwrites anyone else. Raw HTML is not rendered.
 
+**Chinese version (optional).** Put it next to the English note as `notes/<paper id>/<github username>.zh.md`, with the same front matter. The note then gets an **EN / 中文** switch; a reader's choice applies to every note and is remembered. A note can also be Chinese only (just the `.zh.md` file).
+
 ## Recommended papers (admins)
 
 `featured.yaml` lists the papers the organizers recommend reading first. They are listed, in file order, on the Recommended page, carry a ★ Recommended mark in the list and on the paper page, and can be filtered or sorted first. To recommend a paper, add its id; `why` (a line for newcomers) and `by` are optional:

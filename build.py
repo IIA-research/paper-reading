@@ -5,6 +5,7 @@
 """
 import collections
 DIMS = ("When", "What", "How")
+NOTE_LANGS = ("zh",)   # extra note languages: notes/<paper>/<user>.<lang>.md
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 import datetime as dt
 import json
@@ -108,12 +109,16 @@ def main():
         p["arxiv_label"] = f"arXiv {MONTHS[int(m.group(2)) - 1]} 20{m.group(1)}" if m else f"arXiv {p.get('year') or ''}".strip()
         by_slug[p["slug"]] = p
 
-    # Notes: notes/<paper slug>/<GitHub username>.md
+    # Notes: notes/<paper slug>/<GitHub username>.md, optionally with a Chinese version <username>.zh.md
     dates = git_dates()
+    by_note = {}
     for f in sorted(NOTES.glob("*/*.md")) if NOTES.exists() else []:
         if f.name.startswith(("_", ".")) or f.stem.upper() == "README":
             continue
         slug, author = f.parent.name, f.stem
+        lang = "en"
+        if author.endswith(tuple(f".{l}" for l in NOTE_LANGS)):
+            author, lang = author.rsplit(".", 1)
         paper = by_slug.get(slug)
         if not paper:
             warnings.append(f"{f.relative_to(ROOT)}: no paper with id {slug} in papers.yaml, skipped")
@@ -137,13 +142,17 @@ def main():
             continue
         rel = f.relative_to(ROOT).as_posix()
         date = dates.get(rel) or dt.date.fromtimestamp(f.stat().st_mtime).isoformat()
-        paper["notes"].append({
-            "author": author,
-            "name": name,
-            "html": MD.render(text),
-            "date": date,
-            "path": rel,
-        })
+        n = by_note.get((slug, author))
+        if not n:
+            n = by_note[(slug, author)] = {"author": author, "name": "", "date": "", "versions": {}}
+            paper["notes"].append(n)
+        n["versions"][lang] = {"html": MD.render(text), "path": rel}
+        n["name"] = n["name"] or name
+        n["date"] = max(n["date"], date)
+    for n in by_note.values():
+        # English first when there is one; the switch on the page lets readers pick
+        n["langs"] = [l for l in ("en", *NOTE_LANGS) if l in n["versions"]]
+        n["html"], n["path"] = n["versions"][n["langs"][0]]["html"], n["versions"][n["langs"][0]]["path"]
     # one nickname per GitHub user: the one in their most recent note that has one
     nick = {}
     for n in sorted((n for p in by_slug.values() for n in p["notes"] if n["name"]), key=lambda n: n["date"]):
@@ -222,7 +231,7 @@ def main():
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
     common = {"site": site, "repo": repo, "branch": branch, "sections": sections, "sec_by_key": sec_by_key,
-              "n_featured": len(picks),
+              "n_featured": len(picks), "lang_names": {"en": "EN", "zh": "中文"},
               "dim_tips": {"When": "When to step in", "What": "Which part of the intent is missing", "How": "How the gap is resolved"},
               "giscus": giscus, "built": dt.date.today().isoformat(),
               "v": dt.datetime.now().strftime("%Y%m%d%H%M%S")}
@@ -263,7 +272,7 @@ def main():
     for p in plist:
         d = OUT / "p" / p["slug"]
         d.mkdir()
-        has_math = any('class="math' in n["html"] for n in p["notes"])
+        has_math = any('class="math' in v["html"] for n in p["notes"] for v in n["versions"].values())
         (d / "index.html").write_text(
             tpl.render(root="../../", page="paper", paper=p, sec=sec_by_key.get(p.get("section")), has_math=has_math, **common),
             encoding="utf8")
