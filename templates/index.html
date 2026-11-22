@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<p class="intro"><b>{{ stats.papers }}</b> papers on interactive intent alignment, sorted into {{ sections | length }} sections. <a href="featured.html">{{ picks | length }} are featured</a> as a starting point; <a href="overview.html">Overview</a> shows how the field breaks down.</p>
+<p class="intro"><b>{{ stats.papers }}</b> papers on interactive intent alignment: <b>{{ stats.accepted }}</b> accepted at a conference or journal, {{ stats.workshop }} at workshops, {{ stats.preprint }} on arXiv only (venues checked on {{ built }}). <a href="featured.html">{{ picks | length }} are featured</a> as a starting point.</p>
 
 <div class="browse">
   <aside class="facets" id="facets" aria-label="Filters">
@@ -11,6 +11,7 @@
     <div class="tools">
       <button class="ftoggle" id="ftoggle" aria-controls="facets" aria-expanded="false">Filter<span id="fcount"></span></button>
       <button class="featonly" id="featOnly" aria-pressed="false">★ Featured only</button>
+      <button class="featonly" id="accOnly" aria-pressed="false">Accepted only</button>
       <input type="search" id="q" placeholder="Search" aria-label="Search titles, summaries, topics, venues, note authors">
       <label class="sortl">Sort
         <select id="fSort" aria-label="Sort">
@@ -19,7 +20,6 @@
           <option value="title">Title A–Z</option>
           <option value="noted">Recently noted</option>
           <option value="notes">Most notes</option>
-          <option value="section">Section</option>
           <option value="featured">Featured first</option>
         </select>
       </label>

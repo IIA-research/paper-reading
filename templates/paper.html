@@ -2,14 +2,13 @@
 {% block title %}{{ paper.title }} · {{ site.title }}{% endblock %}
 {% block head %}{% if has_math %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">{% endif %}{% endblock %}
 {% block main %}
-<article class="article {% if sec %}c-{{ sec.color }}{% endif %}">
-  <a class="back" href="{{ root }}index.html{% if sec %}#s={{ sec.key | urlencode }}{% endif %}">← {{ sec.key if sec else "All papers" }}</a>
+<article class="article">
+  <a class="back" href="{{ root }}index.html">← All papers</a>
 
   <div class="pmeta">
     {% if paper.featured %}<span class="fbadge">★ Featured</span>{% endif %}
-    {% if sec %}<span class="code">{{ sec.code }}</span><span class="sec">{{ sec.key }}</span>{% endif %}
-    {% if paper.type %}<span>{{ paper.type }}</span>{% endif %}
-    <span>{{ paper.year }}</span><span>{{ paper.venue }}</span>
+    {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">arXiv {{ paper.year }}</span>{% endif %}
+    {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
   </div>
   {% if paper.thumb %}
   {% set host = paper.url.split('/')[2] if paper.url and '//' in paper.url else '' %}
@@ -28,8 +27,6 @@
   {% if paper.summary %}<p class="abs">{{ paper.summary }}</p>{% endif %}
   <p class="facts">
     {% if paper.url %}<a href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper ↗</a>{% endif %}
-    <span>Owner: {% if sec and sec.owners %}{% for o in sec.owners %}<a href="https://github.com/{{ o }}">{{ o }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% else %}unclaimed{% endif %}</span>
-    {% if paper.also %}<span>Also: {{ paper.also | join(", ") }}</span>{% endif %}
   </p>
 
   <h2 id="notes">Notes <span class="mono">{{ paper.notes | length }}</span></h2>

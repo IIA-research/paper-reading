@@ -3,6 +3,7 @@
     python build.py                          # build
     python -m http.server -d _site 8000      # preview at http://localhost:8000
 """
+import collections
 import datetime as dt
 import json
 import pathlib
@@ -89,6 +90,11 @@ def main():
         p["notes"] = []
         p["thumb"] = (ROOT / "thumbs" / f"{p['slug']}.webp").exists()
         p["featured"] = None
+        # option one: papers are told apart by venue, year and kind (Benchmark vs Paper)
+        p["kind"] = "Benchmark" if p.get("type") == "Benchmark" else "Paper"
+        st = p.get("status") or "preprint"
+        p["venue_group"] = (re.sub(r"\s*(?:19|20)\d{2}.*$", "", p.get("venue") or "").strip() or p.get("venue")) if st in ("published", "accepted") \
+            else ("Workshop" if st == "workshop" else "arXiv only")
         by_slug[p["slug"]] = p
 
     # Notes: notes/<paper slug>/<GitHub username>.md
@@ -145,7 +151,9 @@ def main():
                              "by": (f.get("by") or "").strip() if isinstance(f, dict) else "", "rank": rank}
             picks.append(p)
     recent = sorted(all_notes, key=lambda x: x[0]["date"], reverse=True)[:8]
+    vstat = collections.Counter(p.get("status") or "preprint" for p in plist)
     stats = {
+        "accepted": vstat["published"] + vstat["accepted"], "workshop": vstat["workshop"], "preprint": vstat["preprint"],
         "papers": len(plist),
         "with_notes": sum(1 for p in plist if p["notes"]),
         "notes": len(all_notes),
@@ -204,6 +212,7 @@ def main():
         "al": p.get("also") or [], "u": p.get("user") or "", "tr": p.get("training") or "",
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
         "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
+        "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"],
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(
@@ -213,7 +222,7 @@ def main():
                        "n": s["n"], "done": s["done"]} for s in sections], **common),
         encoding="utf8")
 
-    for name, page in (("featured.html", "featured"), ("overview.html", "overview")):
+    for name, page in (("featured.html", "featured"),):   # overview.html is retired (kept in templates/)
         (OUT / name).write_text(env.get_template(name).render(root="", page=page, stats=stats, picks=picks, shift=shift, **common),
                                 encoding="utf8")
 

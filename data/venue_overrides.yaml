@@ -1,0 +1,27 @@
+# Venue decisions checked by hand (web search / official pages) where the automatic check
+# (Semantic Scholar, DBLP, ACL Anthology, OpenReview, arXiv comments) could not decide or the sources disagreed.
+# status: published | accepted | workshop | preprint
+"2406.12045": {venue: ICLR 2025, status: published, source: "ICLR 2025 proceedings (proceedings.iclr.cc)"}
+"2310.10996": {venue: FSE 2024, status: published, source: "FSE 2024, Proc. ACM Softw. Eng. 103 (retitled: ClarifyGPT: A Framework for Enhancing LLM-based Code Generation via Requirements Clarification)"}
+"2212.10711": {venue: ICLR 2023, status: published, source: "ICLR 2023 poster (iclr.cc)"}
+"2405.14655": {venue: NeurIPS 2024, status: published, source: "NeurIPS 2024 proceedings (as Multi-turn Reinforcement Learning with Preference Human Feedback)"}
+"2211.12503": {venue: ACL 2023, status: published, source: "ACL Anthology 2023.acl-long.804"}
+"2307.03744": {venue: CHI 2025, status: published, source: "CHI 2025 (retitled: Effects of LLM-based Search on Decision Making)"}
+"2410.19692": {venue: ACM TOIS 2026, status: published, source: "ACM TOIS 44(5), DOI 10.1145/3809182"}
+"2505.02709": {venue: AIES 2025, status: published, source: "AIES 2025 proceedings, DOI 10.1609/aies.v8i1.36541"}
+"2510.12015": {venue: SIGIR 2025 Workshop (GENNEXT), status: workshop, source: "GENNEXT@SIGIR'25 workshop page"}
+"2510.02331": {venue: SIGIR 2025 Workshop (GENNEXT), status: workshop, source: "GENNEXT@SIGIR'25 workshop paper"}
+"2603.06878": {venue: IUI 2026 Workshop (MIRAGE), status: workshop, source: "IUI 2026 MIRAGE workshop (per paper)"}
+"10.5860/crl_29_03_178": {venue: College & Research Libraries 1968, status: published, source: "C&RL 29(3):178-194"}
+"2609.37453": {venue: PRIMA 2026, status: accepted, source: "authors' arXiv comment only; not found in an accepted-papers list"}
+"2605.10930": {venue: NeurIPS 2026 Workshop (AI4GOOD), status: workshop, source: "OpenReview NeurIPS.cc/2026/Workshop/AI4GOOD"}
+"2611.15460": {venue: NeurIPS 2026 Workshop (Trustworthy AI for Good), status: workshop, source: "authors' arXiv comment"}
+"2501.14625": {venue: WINE 2025, status: published, source: "authors' arXiv comment: In Proceedings of WINE '25"}
+"2508.14114": {venue: ICCE 2025, status: accepted, source: "authors' arXiv comment (Computers in Education); Semantic Scholar's 'Consumer Electronics' match is wrong"}
+"2502.08554": {venue: Collective Intelligence 2025, status: published, source: "DBLP conf/ci (ACM Collective Intelligence), not CHI"}
+"2502.01390": {venue: Collective Intelligence 2025, status: published, source: "DBLP conf/ci (ACM Collective Intelligence), not CHI"}
+"10.1037/10096-006": {venue: "Perspectives on Socially Shared Cognition (book, 1991)", status: published, source: "APA book chapter; DBLP books/others/91"}
+"fallibleuser-an-imperfect-user-agent-for-realistic-evaluation-of-interactive-ai": {venue: ASE 2026, status: published, source: "DOI 10.1145/3832783.3834622, Proceedings of the 41st IEEE/ACM ASE"}
+"2507.10445": {venue: CRAC 2025 Workshop, status: workshop, source: "Proceedings of the Eighth Workshop on Computational Models of Reference, Anaphora and Coreference"}
+"2608.19564": {venue: NORA 2026 Workshop, status: workshop, source: "ACL Anthology 2026.nora-1.2 (3rd NORA workshop)"}
+"2108.12637": {venue: EMNLP 2022 Workshop (SereTOD), status: workshop, source: "ACL Anthology SereTOD workshop"}

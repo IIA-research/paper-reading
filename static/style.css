@@ -207,7 +207,7 @@ select{cursor:pointer}
 
 /* list */
 .list{display:flex;flex-direction:column}
-.row{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:16px;align-items:start;padding:16px 8px;margin:0 -8px;border-bottom:1px solid var(--rule);text-decoration:none}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:16px 8px;margin:0 -8px;border-bottom:1px solid var(--rule);text-decoration:none}
 .row:hover{background:var(--hover)}
 .row .code{margin-top:3px}
 .row .t{font-family:var(--serif);font-size:18px;line-height:1.3;font-weight:500}
@@ -289,3 +289,13 @@ select{cursor:pointer}
   .row .th{width:60px;height:78px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* venue badge: accepted venues stand out; workshops dashed; arXiv-only plain */
+.vb{display:inline-block;font-family:var(--sans);font-style:normal;font-size:12.5px;font-weight:600;color:var(--fg);background:var(--surface);border:1px solid var(--rule-strong);border-radius:4px;padding:0 7px;line-height:20px;white-space:nowrap}
+.vb.ws{font-weight:500;color:var(--fg-2);border-style:dashed}
+.vb.pp{font-weight:500;color:var(--muted);background:transparent;border-color:transparent;padding:0}
+.bm{display:inline-block;font-size:12px;font-weight:600;color:var(--fg-2);background:var(--hover);border-radius:4px;padding:0 6px;line-height:20px}
+.row .meta{gap:8px;align-items:center}
+.row .meta>span+span::before{content:none}
+.pmeta{gap:8px}
+.fcard .fmeta{gap:8px}

@@ -5,8 +5,8 @@
 <p class="intro">{{ picks | length }} papers picked by the organizers. New to interactive intent alignment? Start here.</p>
 <div class="feat-grid">
 {% for p in picks %}{% set s = sec_by_key.get(p.section) %}
-  <a class="fcard {% if s %}c-{{ s.color }}{% endif %}" href="p/{{ p.slug }}/index.html">
-    <span class="fmeta">{% if s %}<span class="code">{{ s.code }}</span><span>{{ s.key }}</span>{% endif %}<span class="fy">{{ p.type }} · {{ p.year }}</span></span>
+  <a class="fcard" href="p/{{ p.slug }}/index.html">
+    <span class="fmeta">{% if p.status in ("published", "accepted") %}<span class="vb">{{ p.venue }}</span>{% elif p.status == "workshop" %}<span class="vb ws">{{ p.venue }}</span>{% else %}<span class="vb pp">arXiv {{ p.year }}</span>{% endif %}{% if p.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}</span>
     <span class="ft">{{ p.title }}</span>
     {% if p.featured.why %}<span class="fw">{{ p.featured.why }}</span>{% elif p.summary %}<span class="fw">{{ p.summary }}</span>{% endif %}
     {% if p.featured.by %}<span class="fby">Picked by {{ p.featured.by }}</span>{% endif %}

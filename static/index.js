@@ -11,18 +11,15 @@ const PAGE = 80;
 const venueKind = d => d.v === "arXiv" ? "arXiv preprint" : (!d.v || d.v === "Unknown") ? "Unknown" : "Peer-reviewed";
 const EARLY = "2021 and earlier";
 const yearBin = d => d.y >= 2022 ? String(d.y) : EARLY;
+// Papers are told apart by venue, year and kind. The old sections stay in the data but are not shown.
+const STATUS = {published: "Accepted", accepted: "Accepted", workshop: "Workshop", preprint: "arXiv only"};
 const FACETS = [
-  {k: "s",  name: "Section",            get: d => state.also ? [d.s, ...d.al] : [d.s], order: SECS.map(s => s.k)},
-  {k: "ft", name: "Featured",           get: d => [d.f ? "Featured" : "Not featured"], order: ["Featured", "Not featured"]},
-  {k: "ty", name: "Paper type",         get: d => [d.ty]},
-  {k: "u",  name: "Who plays the user", get: d => [d.u]},
-  {k: "tr", name: "Training",           get: d => [d.tr]},
-  {k: "ml", name: "Model",              get: d => [d.ml]},
-  {k: "mo", name: "Modality",           get: d => d.mo},
-  {k: "y",  name: "Year",               get: d => [yearBin(d)], sortBy: "value"},
-  {k: "pv", name: "Venue",              get: d => [venueKind(d)]},
-  {k: "nt", name: "Notes",              get: d => [d.a.length ? "Has notes" : "No notes yet"]},
-  {k: "by", name: "Note author",        get: d => d.a},
+  {k: "ac", name: "Accepted?", get: d => [STATUS[d.st] || "arXiv only"], order: ["Accepted", "Workshop", "arXiv only"]},
+  {k: "va", name: "Venue",     get: d => STATUS[d.st] === "Accepted" ? [d.va] : []},
+  {k: "y",  name: "Year",      get: d => [yearBin(d)], sortBy: "value"},
+  {k: "kd", name: "Type",      get: d => [d.k], order: ["Paper", "Benchmark"]},
+  {k: "ft", name: "Featured",  get: d => [d.f ? "Featured" : "Not featured"], order: ["Featured", "Not featured"]},
+  {k: "nt", name: "Notes",     get: d => [d.a.length ? "Has notes" : "No notes yet"]},
 ];
 const FK = Object.fromEntries(FACETS.map(f => [f.k, f]));
 
@@ -98,6 +95,9 @@ function updateFacets(){
 // "EMNLP 2026 Findings" already names the year; "arXiv" does not
 const venueLabel = d => !d.v || d.v === "Unknown" ? String(d.y || "") : String(d.v).includes(String(d.y)) ? d.v : `${d.v} ${d.y}`;
 
+const venueBadge = d => d.st === "preprint" ? `<span class="vb pp">arXiv ${esc(d.y)}</span>`
+  : `<span class="vb${d.st === "workshop" ? " ws" : ""}">${esc(d.v)}</span>`;
+
 // ---- sorting ----
 const SORTS = {
   featured: (a, b) => b.f - a.f || a.fr - b.fr || (b.y || 0) - (a.y || 0),
@@ -112,6 +112,7 @@ const SORTS = {
 function render(){
   updateFacets();
   $("featOnly").setAttribute("aria-pressed", state.sel.ft.has("Featured"));
+  $("accOnly").setAttribute("aria-pressed", state.sel.ac.has("Accepted"));
 
   // active filter chips
   const chips = [];
@@ -132,10 +133,9 @@ function render(){
     const s = SEC[d.s] || {c: "gray", code: "··"};
     let head = "";
     if (byYear && d.y !== lastY) { lastY = d.y; head = `<div class="yh"><span>${esc(d.y)}</span><span class="mono">${ycount[d.y]} paper${ycount[d.y] === 1 ? "" : "s"}</span></div>`; }
-    return head + `<a class="row c-${esc(s.c)}" href="p/${encodeURIComponent(d.slug)}/index.html">
-      <span class="code" title="${esc(d.s)}">${esc(s.code)}</span>
+    return head + `<a class="row" href="p/${encodeURIComponent(d.slug)}/index.html">
       <span class="mid"><span class="t">${esc(d.t)}</span>
-        <span class="meta">${d.f ? `<span class="fe">★ Featured</span>` : ""}<span class="ty">${esc(d.ty)}</span><span class="vn">${esc(venueLabel(d))}</span>${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
+        <span class="meta">${venueBadge(d)}${d.k === "Benchmark" ? `<span class="bm">Benchmark</span>` : ""}${d.f ? `<span class="fe">★ Featured</span>` : ""}${d.a.length ? `<span class="nn">${d.a.length} note${d.a.length === 1 ? "" : "s"}</span>` : ""}</span>
         ${d.m ? `<span class="s">${esc(d.m)}</span>` : ""}</span>
       ${d.th ? `<img class="th" src="thumbs/${encodeURIComponent(d.slug)}.webp" alt="" loading="lazy" width="84" height="109">` : ""}
     </a>`;
@@ -165,6 +165,7 @@ $("active").addEventListener("click", e => {
 });
 $("clearAll").addEventListener("click", () => { FACETS.forEach(f => state.sel[f.k].clear()); state.q = ""; $("q").value = ""; changed(); });
 $("featOnly").addEventListener("click", () => toggle("ft", "Featured"));
+$("accOnly").addEventListener("click", () => toggle("ac", "Accepted"));
 let qt; $("q").addEventListener("input", () => { clearTimeout(qt); qt = setTimeout(() => { state.q = $("q").value.trim(); changed(); }, 150); });
 $("fSort").addEventListener("change", () => { state.sort = $("fSort").value; changed(); });
 $("more").addEventListener("click", () => { shown += PAGE; render(); });
