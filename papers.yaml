@@ -1,15 +1,16 @@
 # Paper list, one entry per paper. Do not change `id`: note folders and comment threads are keyed on it.
 # `section` must be one of the section keys in site.yaml (kept, not shown on the site).
 # `status` / `venue` / `venue_source`: checked 2026-11-21 against ACL Anthology, DBLP, publisher DOIs, OpenReview,
-# Semantic Scholar and arXiv comments (scripts/check_venues.py); `venue_iia` is the original label from the IIA map.
+# Semantic Scholar and arXiv comments (scripts/venue_*.py); `venue_iia` is the original label from the IIA map.
+# `year`: year the paper first appeared (arXiv v1 or online publication), not a journal's later issue year.
 
 - id: 10.1016/j.ipm.2026.105227
   title: 'Bridging the Cognitive Gulf: User Dialogue Repair Strategies and Effectiveness in Human-AI Interaction'
   url: https://doi.org/10.1016/j.ipm.2026.105227
-  year: 2027
+  year: 2026
   venue: Information Processing & Management
   status: published
-  venue_source: DOI 10.1016/j.ipm.2026.105227
+  venue_source: DOI 10.1016/j.ipm.2026.105227; online Oct 2026 (Crossref), issue Vol 64(2) Feb 2027; year = online year
   venue_iia: Information Processing & Management
   section: Understanding
   also: []
