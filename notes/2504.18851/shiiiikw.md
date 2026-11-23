@@ -1,0 +1,19 @@
+---
+name: "Kevin"
+---
+
+When2Call studies whether an LLM, given a user request, should call a tool directly, first ask the user for missing information, or admit that the available tools cannot do the task. The authors find that many models can call tools but do not know when not to. For example, a user asks for information about a company but does not give the company domain the tool requires. The model may make up a domain and call the tool instead of checking with the user first. To address this, the authors build the When2Call dataset and use supervised fine-tuning and preference training to teach models to choose the right behavior.
+
+### Building the benchmark
+
+The benchmark is adapted from BFCL v2 Live, and the training data comes from APIGen. The authors first keep requests that can be handled with a normal tool call, then delete some required arguments the user provided, creating tasks that cannot be carried out without a follow-up question. They also construct two more cases: the request is related to the tools but the available tools cannot complete it, or there are no usable tools at all. Each item thus has one correct behavior: call a tool, ask the user, or say it cannot be done. Because all these tasks need tools, making up an answer is always wrong. Evaluation mainly checks which behavior the model chooses next, rather than having it complete the whole task. For models whose output probabilities can be read, the probabilities of four candidate responses are compared; for models where they cannot, the model responds normally and another LLM judges which behavior it actually took.
+
+### Training
+
+The authors compare three training setups. The first is plain SFT, where the model learns the normal tool calls in existing data. The second adds When2Call's correct responses to the SFT data. For example, for a request missing a required argument, the model is taught to ask a clarifying question; for a request that cannot be completed, it is taught to say so. The third continues training after plain SFT with the existing RPO (Reward-aware Preference Optimization). Unlike SFT, which only imitates correct responses, RPO provides both a good and a bad response so the model learns to tell them apart. The authors build two kinds of training pairs. The first trains choosing the right behavior: for the same item, the correct call, question or refusal is the good response, and a randomly chosen wrong behavior is the bad response. The second trains using tools correctly: the correct call is the good response, and bad responses are made by deleting required arguments, changing argument values or leaving out some tool calls. The two kinds are mixed 1:1, so that the model does not learn to refuse or ask and then lose the ability to call tools normally.
+
+RPO works as follows: compute each response's probability under the current model and under a fixed reference model, and take the difference of their log probabilities as an implicit score. Then push the score gap between the good and bad responses toward the reward gap given in the training data.
+
+### Experiments
+
+The main comparison is between plain SFT, SFT with When2Call data, and SFT followed by RPO. The authors also use the original BFCL to check normal tool-calling ability, so that a model does not get better at asking and refusing while losing the ability to execute tools. They find that SFT with added asking and refusal examples does reduce wrong calls, but tends to make the model too conservative, unwilling to call tools even for requests it could complete. RPO, by training both behavior choice and correct tool calls, balances the two better. Note that this paper learns which behavior to take for the current request; it does not actually train a model to choose when to interrupt the user during a long-horizon task.

@@ -1,0 +1,27 @@
+---
+name: "Kevin"
+---
+
+When and What to Ask studies whether an LLM can tell which key information is missing from a user request, and when it should stop asking and answer directly. The authors also consider another case: the information the user gives looks complete but contains a false premise, and the model needs to point out the error rather than accept it. To this end, the paper proposes AskBench, which splits tasks into two kinds. AskMind tests whether the model can spot missing information and proactively clarify; AskOverconfidence tests whether the model can recognize and correct wrong information the user gives. The authors argue that judging only whether the final answer is correct is not enough; one also needs to check whether the model asked about the conditions that actually affect the answer.
+
+### Building the benchmark
+
+The benchmark is adapted from Math500, MedQA, GPQA-d and BBH, with 400 items for each of the two task types. AskMind deletes or blurs part of the information in an originally complete question, such as key numbers, the subject of study or constraints, so the model cannot determine the answer directly. AskOverconfidence inserts a wrong derivation or false premise into the question. Each item comes with a rubric, a checklist that states which information the model should clarify or which errors it should correct. The model sees only the modified question; another fixed LLM holds the full original question, the reference answer and the rubric, simulates the user's replies and judges whether the model asked the right things. The test allows at most 3 assistant turns. The model can stop early and answer, but must give an answer in the last turn.
+
+### Training process
+
+Training data comes from DAPO math problems and MedMCQA. The authors first have the model answer each original question 16 times, sort questions into difficulty levels by how many times it got them right, and then pick training samples from different difficulty levels. Then, as when building the benchmark, they delete some key information or insert a false premise, and generate a rubric for each question. Next they use these questions to generate multi-turn dialogues. The assistant first asks, the simulated user answers; if some information in the rubric has still not been asked about, more questions are generated. Once there is enough information, the final answer is generated.
+
+### Reward design
+
+Training uses RLVR, whose core is scoring the model's questions directly against the rubric rather than only checking whether the final answer is right. The authors design different rewards for different stages. In a turn where the model should be gathering information, giving an answer directly scores −2; asking a question that covers no rubric item scores −0.8; covering some items scores +0.8; and if this turn's questions cover all items, +1. For example, if the rubric requires confirming the patient's age, medications and medical history and the model only asks about age, it gets 0.8; if it asks about all three in this turn, it gets 1. "All items" here means all the requirements originally listed for the question, not a running total of what earlier turns asked. In the turn where it should give the final answer, a correct answer scores +1, a wrong one −1, and continuing to ask scores −2. AskOverconfidence uses a similar scheme, except that what is checked is whether the model points out the false premise.
+
+### Training method
+
+Finally the assistant is trained with GRPO, with the LLM that simulates the user and does the scoring held fixed. During training, 8 responses are generated per input, scored against the rubric, and compared within the group to see which scored higher. The model thus leans toward questions that cover the key requirements, and also learns to stop asking at the final-answer stage.
+
+### Experimental setup
+
+Baselines include the untrained original model, FATA, AskToAct, Self-Alert and plain SFT. FATA instructs the model in the initial prompt to ask proactively and then runs the same multi-turn interaction. AskToAct originally involves tool use, but the authors do not reproduce its tool execution here and run it only as a plain dialogue model. Self-Alert is mainly for the false-premise task and uses the prompt to remind the model to check whether the user's claims are reliable. SFT directly learns the authors' synthesized correct clarification dialogues, without reinforcement learning on rubric rewards. To further test generalization, the authors also use QuestBench, IN3 and HealthBench.
+
+The results show that reinforcement learning markedly improves the model's ability to find missing information. Accuracy on AskMind rises from 33.2% to 61.5%, and the share of cases where the model fully asks for the information the rubric requires rises from 21.4% to 67.9%. But it also brings a problem: the model becomes more inclined to ask, and may keep clarifying even when it already has enough information. On IN3, for requests that were clear to begin with, the share the model answers directly falls from 100% to 62.5%. So the paper shows that rubric rewards can effectively teach a model to ask the key questions, but also that rewarding useful questions alone can push the model toward over-asking. Its training on "what to ask" is fairly thorough, while its control of "when no more questions are needed" is still not ideal.

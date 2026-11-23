@@ -1,0 +1,9 @@
+---
+name: "Kevin"
+---
+
+Learning Steerable Clarification Policies studies how one LLM can choose among answering directly, listing multiple answers, and asking for clarification as the costs of questions and answer length change. The proposed SGP policy takes both cost coefficients as inputs. The user model knows the true intent, which is initially hidden from the assistant. At the end of the dialogue, the user model extracts the answer that matches its intent from the assistant's reply. The reward is the final answer's F1 score minus α times the number of questions and minus β times the number of words in the assistant's final reply. Here α is the cost per question, and β is the cost per word in that reply.
+
+Training uses the ReST iterative self-training framework. The assistant tries four strategies. It can answer directly, list several answers, ask once and give one answer, or ask once and list several answers. For a given question and pair of cost coefficients, the authors compare the four strategies' mean rewards across possible user intents. They choose the strategy with the highest mean reward and use its high-scoring dialogues for supervised fine-tuning.
+
+The benchmarks are AmbigQA and Pacific, a financial document question-answering task. The authors filter problematic ambiguity annotations from AmbigQA. On Pacific, the assistant receives only the document and table, and the user model clarifies its intent. Both tasks allow at most one clarification per question. The main experiments fine-tune a Gemma2-9B assistant. Prompted-CoT asks the model to reason before choosing a strategy. Each fixed policy enforces one of the four strategies. Answer-FT fine-tunes only on high-scoring direct answers. SGP-Oracle generates dialogues for different strategies and selects the one with the highest mean reward. The authors also evaluate off-the-shelf Gemini 2.5 Flash and Gemini 3 Flash.

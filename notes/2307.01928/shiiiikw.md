@@ -1,0 +1,7 @@
+---
+name: "Kevin"
+---
+
+Robots That Ask for Help studies how an LLM robot planner can maintain planning success while asking people for help less often. Its method, KnowNo, generates four candidate actions, adds an “other action” option, and scores the options using the probabilities the model assigns to their letters. A calibration set with labeled correct actions determines which scores to retain at a target error rate. If exactly one concrete action remains, the robot executes it. Otherwise, it asks a person to choose an action or supply another one. For multistep tasks, calibration uses the lowest score assigned to a correct action along each trajectory to control planning error over the whole task.
+
+The authors build tasks for tabletop tidying in PyBullet, food sorting with a real robot arm, kitchen pick-and-place, and dual-arm manipulation. They introduce ambiguity through quantities, locations, references, and partially hidden user preferences. They primarily use PaLM-2L and also test GPT-3.5 on kitchen planning, without fine-tuning. No Help never asks. Simple Set retains candidates by cumulative probability. Ensemble Set builds a candidate set from selection frequencies across 20 randomized prompts. Prompt Set asks the model to list plausible actions, and Binary asks whether it is certain. In the real-robot experiments, the authors also tune the Simple Set threshold to match KnowNo's planning success rate, then compare how often each asks for help.
