@@ -1,6 +1,12 @@
 # Featured papers: the organizers' picks (精读), shown first on the home page and marked on each paper.
-# Only admins should edit this file. Only papers accepted at a venue (conference, journal or workshop) are listed;
-# arXiv-only preprints are left out (rule set 2026-11-22). Order here is the order on the home page.
+# Only admins should edit this file. Order here is the order on the home page.
+#
+# Rules (2026-11-24):
+#   1. Accepted at a mainstream AI venue (main conference, Findings or journal). arXiv-only papers, workshop-only
+#      papers and venues outside mainstream AI (e.g. UbiComp) do not count.
+#   2. Someone has read it: the paper has a note or a comment. Exceptions: our own papers, and Spotlight or Oral papers.
+#   3. In papers.yaml, write Oral, Spotlight or an award after the venue (e.g. "ICLR 2025 Spotlight"),
+#      and list any workshop the paper was also at under `workshops:`.
 #
 #   - id: "2610.12655"          # the paper's id from papers.yaml (keep the quotes)
 #     why: One or two sentences on why a newcomer should read this.   (optional; without it the summary is shown)
@@ -8,24 +14,13 @@
 #
 # Initial list: the papers starred in the IIA literature map (claude.ai), imported 2026-11-20.
 
-- id: "2602.20424"
-- id: "2605.20087"
-- id: "2610.15948"
-- id: "2503.12370"
-- id: "2509.13664"
 - id: "2602.02455"
-- id: "2602.03468"
 - id: "2601.06407"
-- id: "2609.24290"
 - id: "2602.11199"
 - id: "2502.04485"
 - id: "2511.10453"
 - id: "2610.36353"
-- id: "2610.20052"
-- id: "2405.12063"
 - id: "2605.07937"
-- id: "2603.19997"
-- id: "2510.24668"
 - id: "2605.28108"
 - id: "2606.03135"
 - id: "2406.00222"

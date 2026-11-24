@@ -8047,9 +8047,9 @@
   title: Active Task Disambiguation with LLMs
   url: https://arxiv.org/abs/2502.04485
   year: 2025
-  venue: ICLR 2025
+  venue: ICLR 2025 Spotlight
   status: published
-  venue_source: DBLP conf/iclr/KobalczykALS25
+  venue_source: 'DBLP conf/iclr/KobalczykALS25; OpenReview: ICLR 2025 Spotlight'
   venue_iia: ICLR 2025
   section: Elicitation
   also: []
@@ -10381,9 +10381,9 @@
   title: Reasoning About Intent for Ambiguous Requests
   url: https://arxiv.org/abs/2511.10453
   year: 2025
-  venue: COLM 2026
+  venue: COLM 2026 Spotlight
   status: accepted
-  venue_source: 'arXiv comment: COLM 2026'
+  venue_source: 'arXiv comment: COLM 2026; Spotlight on colm.cc/Conferences/2026/AcceptedPapers'
   venue_iia: COLM 2026
   section: Understanding
   also:
@@ -10699,9 +10699,9 @@
   title: Teaching Language Models To Gather Information Proactively
   url: https://arxiv.org/abs/2507.21389
   year: 2025
-  venue: EMNLP 2025
+  venue: EMNLP 2025 Findings
   status: published
-  venue_source: DBLP conf/emnlp/HuangCCMYWZ25
+  venue_source: ACL Anthology 2025.findings-emnlp.843 (DBLP conf/emnlp/HuangCCMYWZ25)
   venue_iia: arXiv
   section: Elicitation
   also:
