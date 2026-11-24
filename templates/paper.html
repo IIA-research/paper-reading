@@ -7,7 +7,7 @@
     <a class="back" href="{{ root }}index.html">← All papers</a>
     <div class="pmeta">
       {% if paper.featured %}<span class="fbadge">★ Recommended</span>{% endif %}
-      {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
+      {% if paper.status in ("published", "accepted") %}<span class="vb">{{ paper.venue }}</span>{% for w in paper.workshops %}<span class="vb ws">{{ w }}</span>{% endfor %}{% elif paper.status == "workshop" %}<span class="vb ws">{{ paper.venue }}</span>{% else %}<span class="vb pp">{{ paper.arxiv_label }}</span>{% endif %}
       {% if paper.kind == "Benchmark" %}<span class="bm">Benchmark</span>{% endif %}
       {% for x in paper.dims %}<span class="dm {{ x | lower }}" title="{{ dim_tips[x] }}">{{ x }}</span>{% endfor %}
     </div>

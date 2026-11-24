@@ -99,7 +99,7 @@ const venueLabel = d => !d.v || d.v === "Unknown" ? String(d.y || "") : String(d
 const DIM_TIP = {When: "When to step in", What: "Which part of the intent is missing", How: "How the gap is resolved"};
 const dimTags = d => d.dm.map(x => `<span class="dm ${x.toLowerCase()}" title="${DIM_TIP[x]}">${x}</span>`).join("");
 const venueBadge = d => d.st === "preprint" ? `<span class="vb pp">${esc(d.ax)}</span>`
-  : `<span class="vb${d.st === "workshop" ? " ws" : ""}">${esc(d.v)}</span>`;
+  : `<span class="vb${d.st === "workshop" ? " ws" : ""}">${esc(d.v)}</span>` + (d.ws || []).map(w => `<span class="vb ws">${esc(w)}</span>`).join("");
 
 // ---- sorting ----
 const SORTS = {

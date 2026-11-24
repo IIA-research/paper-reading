@@ -100,6 +100,9 @@ def main():
         if bad:
             errors.append(f"{p['id']}: unknown dims {bad}; use {list(DIMS)}")
         p["dims"] = [d for d in DIMS if d in (p.get("dims") or [])]
+        # workshops the paper was also at, shown next to the conference badge (featured.yaml rule 3)
+        ws = p.get("workshops") or []
+        p["workshops"] = [str(w) for w in (ws if isinstance(ws, list) else [ws])]
         st = p.get("status") or "preprint"
         p["venue_group"] = (re.sub(r"\s*(?:19|20)\d{2}.*$", "", p.get("venue") or "").strip() or p.get("venue")) if st in ("published", "accepted") \
             else ("Workshop" if st == "workshop" else "arXiv only")
@@ -251,6 +254,7 @@ def main():
         "mo": p.get("modality") or [], "ml": p.get("model") or "",
         "th": p["thumb"], "f": 1 if p["featured"] else 0, "fr": p["featured"]["rank"] if p["featured"] else 999,
         "st": p.get("status") or "preprint", "va": p["venue_group"], "k": p["kind"], "ax": p["arxiv_label"], "dm": p["dims"],
+        "ws": p["workshops"],
     } for p in plist]
     data_json = json.dumps(index_data, ensure_ascii=False).replace("</", "<\\/")
     (OUT / "index.html").write_text(

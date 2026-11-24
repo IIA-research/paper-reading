@@ -507,7 +507,10 @@
   year: 2026
   venue: COLM 2026
   status: accepted
-  venue_source: 'OpenReview: COLM 2026'
+  venue_source: 'OpenReview: COLM 2026 (colmweb.org/COLM/2026/Conference), poster; also ICML 2026 workshops RLxF (poster) and CATS (oral)'
+  workshops:
+  - ICML 2026 Workshop (RLxF)
+  - ICML 2026 Workshop (CATS), Oral
   venue_iia: arXiv
   section: Training
   also:
