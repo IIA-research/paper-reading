@@ -14804,3 +14804,22 @@
   model: LLM
   topic: Intrinsic rewards from hidden representations
   summary: SR-GRPO uses the stable rank of token representations from a frozen model to score candidate answers and reward a policy during training.
+- id: '2610.24194'
+  title: 'Agents'' Last Doubt: Knowing When to Act and When to Step Back in Tool-Using Agents'
+  url: https://arxiv.org/abs/2610.24194
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: 'no acceptance found (arXiv 2610.24194v1 of 2026-10-16 has no comment or journal_ref; checked 2026-11-24)'
+  section: Elicitation
+  also:
+  - Training
+  type: Method
+  dims: [When]
+  user: User simulator
+  training: SFT
+  modality:
+  - Text
+  model: LLM
+  topic: Learned controller for when to ask, look up or act
+  summary: 'SURE-Act trains a small controller (frozen Qwen3-1.7B with LoRA and a linear head) that, before each turn of an untrained tool-using agent in ToolSandbox, scores four action types (ask the user, read-only query, reversible or irreversible action); labels come from forcing each type once and running to the end (success − cost − critical error). It almost never picks asking (0.36%), and gains on unseen task families are small (+0.02 to +0.06).'
