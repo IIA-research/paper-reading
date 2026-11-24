@@ -1,7 +1,7 @@
 # Featured papers: the organizers' picks (精读), shown first on the home page and marked on each paper.
 # Only admins should edit this file. Order here is the order on the home page.
 #
-# Rules (2026-11-24):
+# Guidelines (2026-11-24), not hard rules: an admin who has read a paper and judges it good may still recommend it.
 #   1. Accepted at a mainstream AI venue (main conference, Findings or journal). arXiv-only papers, workshop-only
 #      papers and venues outside mainstream AI (e.g. UbiComp) do not count.
 #   2. Someone has read it: the paper has a note or a comment. Exceptions: our own papers, and Spotlight or Oral papers.
@@ -30,3 +30,6 @@
 - id: "2601.08427"
 - id: "2512.02807"
 - id: "2603.12273"
+- id: "2601.16400"
+- id: "2609.32255"
+- id: "2610.24194"
