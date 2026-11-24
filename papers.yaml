@@ -10618,9 +10618,9 @@
   title: Structured Uncertainty guided Clarification for LLM Agents
   url: https://arxiv.org/abs/2511.08798
   year: 2025
-  venue: ACL 2026
+  venue: ACL 2026 Findings
   status: published
-  venue_source: DBLP conf/acl/SuriMLDRM26
+  venue_source: ACL Anthology 2026.findings-acl.2028 (DBLP conf/acl/SuriMLDRM26)
   venue_iia: ACL 2026
   section: Elicitation
   also:
