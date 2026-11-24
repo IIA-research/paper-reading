@@ -1,0 +1,23 @@
+---
+name: "Jason"
+---
+
+Real users often state their needs vaguely: the paper rewrites SWE-Bench issues from 194 words on average to 11 words, leaving one sentence like "removing a column gives a confusing error". The agent either does it blindly or asks; asking a lot annoys the user, and asking things the user cannot answer annoys them more; and different users have different preferences: some only answer questions at the start, some only answer multiple-choice questions, some do not want to be asked at all. What the paper wants: while doing the task, the agent decides by itself when to ask the user, asks only what the user can answer, and asks in the way this user prefers.
+
+The task agent (Seed-OSS-36B-Instruct, trained) is a ReAct loop: at each step it writes some reasoning, then calls one tool. Besides the task tools, there is one more tool, ask_user. The user simulator (GPT-5-Nano, not trained) holds two things: the full, exact need, and this conversation's user preference. A conversation goes like this: a vague need comes in; at each step the agent either calls a task tool or calls ask_user to send a question.
+
+When a question reaches the simulator, it first judges how much effort the question takes from the user: if the answer can be found directly in the full need, it answers as is and records low effort; if the question goes beyond the full need and the user can only answer "I don't know", it records medium effort; if the user would have to check code or documents to answer, it gives a hint and records high effort. (How to judge is set per task.) The answer is also changed to fit the preference: a user who only answers multiple-choice questions answers "I don't know" to anything that is not multiple choice. This goes on until the agent gives a final answer.
+
+**They built their own dataset (UserVille).** They take the function-localization tasks of SWE-Gym and the exact needs of BrowseComp-Plus (450 train / 100 test), and have an LLM rewrite them into vague versions: keep at most one key detail and make the rest general. Only the simulator can see the exact version. Each task is copied 13 times: 12 copies of the vague need, each with one training preference, and 1 copy of the exact need. There are 20 preferences in total: 12 for training and 8 that only appear at test time (Italian, JSON, exactly three sentences, include one joke, all capitals…).
+
+**Score: one score per conversation, three parts added up.**
+
+a) The task's own score. b) Proactivity score: the goal is to ask only what the user can answer; if all questions are low effort, +0.05; each medium-effort question −0.1; each high-effort question −0.5. Also, for a vague need, if the agent asks nothing and gives a wrong answer, the whole conversation counts as high effort. c) Personalization score. The goal is to ask in the way this user prefers. Fully following it, +0.05; each violation is penalized by the specific rule of that preference.
+
+**How it is trained: GRPO.** Each step takes 64 (task, preference) samples and samples 8 conversations from the current policy for each. Advantage = (total score clipped to 0–1 − mean of the 8) ÷ standard deviation of the 8, multiplied onto all tokens the model generated in this conversation: reasoning, tool calls, questions, final answer; the simulator's replies and tool returns do not count. DAPO's clip-higher and token-level loss are used; learning rate 1e-6, 200 steps.
+
+"When to ask" has no separate part; it is all squeezed out by the differences in the three scores: for a vague need, not asking leads to a wrong answer, a low task score, and is also counted as high effort; asking a question the user can answer raises the task score and adds 0.05; asking what the user cannot answer loses points. During training, questions per session rise from 0.5 to 1.2, and the increase is mostly low-effort questions; medium-effort questions first rise and then fall; in the ablation without the proactivity score, medium- and high-effort questions keep growing. And adding +0.05 for low effort, instead of only penalties, was a tuning choice (preliminary experiments in Appendix C).
+
+They also ran a study with real people: 33 people with programming experience, the first 100 SWE-Bench tasks × 3 models. No methods from other papers are compared. What they compare is the GPT-5 series run directly and their own ablations. **A paper where when and what are both as free as possible. The core is again reward shaping.**
+
+- Data: self-built UserVille (function localization from SWE-Gym / SWE-Bench-Verified: find the function to change in a code base; BrowseComp-Plus: hard questions that need many searches).
