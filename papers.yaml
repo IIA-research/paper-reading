@@ -300,6 +300,25 @@
   model: LLM
   topic: Intent-expression channels beyond chat
   summary: Proposes an agent-bound UI that separates a reusable-view interaction vocabulary from task-semantic binding, so that humans and multiple agents can communicate intent by direct manipulation on a shared canvas, and evaluates canvas generation and consequence resolution.
+- id: '2611.20441'
+  title: 'Abstention Direction in Large Language Models: Mechanistic Interpretability of Abstention Across Query Ambiguity, Knowledge Limits, and Safety Alignment'
+  url: https://arxiv.org/abs/2611.20441
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also: []
+  type: Analysis
+  dims: [When]
+  user: Static dataset
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Shared abstention direction across ambiguity, knowledge limits and safety
+  summary: Extends the refusal-direction method to abstention caused by query ambiguity, missing model knowledge and safety, using counterfactual pairs that differ only in the abstention factor. Steering middle layers raises or lowers abstention in all three, with cross-effects that point to a shared directional component.
 - id: '2608.27818'
   title: 'AcCoRD: Evaluating User-Agent Collaboration Under Realistic User Preference Dynamics'
   url: https://arxiv.org/abs/2608.27818
@@ -587,6 +606,27 @@
   model: LLM
   topic: Detecting task-framing ambiguity
   summary: Ambig-DS evaluates whether data-science agents notice ambiguity between the prediction target and the evaluation target, instead of silently adopting the wrong task framing.
+- id: '2611.17900'
+  title: 'AmbiSteer: Selectively Eliciting Ambiguity-Aware Responses in Vision-Language Models'
+  url: https://arxiv.org/abs/2611.17900
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also:
+  - Elicitation
+  type: Method
+  dims: [When]
+  user: Static dataset
+  training: Training-free
+  modality:
+  - Text
+  - Image
+  model: VLM
+  topic: Ambiguity-conditioned steering for referential ambiguity in VQA
+  summary: VLMs tend to answer ambiguous visual questions with one referent; prompting plus steering raises clarification and enumeration but also triggers them on clear questions. A linear ambiguity classifier that conditions the steering direction raises appropriately handled inputs from 59.0% to 77.0% on average across three VLMs.
 - id: '2607.03426'
   title: Amortising Bayesian Experimental Design for Sequential Information Gathering in LLMs
   url: https://arxiv.org/abs/2607.03426
@@ -843,6 +883,26 @@
   model: LLM
   topic: Ask-vs-act with detection decoupled from execution
   summary: Adds a separate Intent Agent to a coding agent to decide whether clarification is needed, asking on only some tasks; the overall resolve rate of 69.40% approaches the full-information 70.80%, but at higher cost.
+- id: '2611.18905'
+  title: 'Ask Precisely, Assume Wisely: Interactive Evaluation of Ambiguity Resolution in Large Language Models'
+  url: https://arxiv.org/abs/2611.18905
+  year: 2026
+  venue: NeurIPS 2026 Workshop
+  status: workshop
+  venue_source: 'arXiv comment: NeurIPS 2026. Workshop: Evaluation of Interactive Agents'
+  venue_iia: NeurIPS 2026 Workshop
+  section: Elicitation
+  also:
+  - Evaluation
+  type: Benchmark
+  dims: [When, What]
+  user: User simulator
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Preference-grounded simulator for ask-vs-assume evaluation
+  summary: 'Builds a simulated user that answers only from its disambiguation preferences, and scores multi-turn ambiguity resolution by three dissatisfaction signals: wrong assumptions, repeated clarifications and irrelevant clarifications. Models that ask often over-clarify while assumption-driven ones misalign; prompts optimized on these signals reach a Pareto balance and cut errors by up to 7.65%.'
 - id: '2608.15949'
   title: 'Ask to Be Sure: Informative Interactions for Confident Multi-Turn LLM Recommendation'
   url: https://arxiv.org/abs/2608.15949
@@ -904,6 +964,26 @@
   model: Speech
   topic: Targeted clarification of speech recognition errors
   summary: In streaming ASR, trains a scorer with counterfactual supervision to locate online the error spans worth asking the speaker to repeat, then lets an LLM revise only that span, replacing guessing with targeted questions.
+- id: '2611.23864'
+  title: 'Asking but Missing: Decision Coverage in Natural-Language Data Querying'
+  url: https://arxiv.org/abs/2611.23864
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also:
+  - Elicitation
+  type: Analysis
+  dims: [When, What]
+  user: Static dataset
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Recognizing unresolved decisions before writing data code
+  summary: Names underspecified decision completion, where models silently adopt assumptions for questions with several computational readings, and separates finding the open decisions, resolving them from evidence and turning them into code. On BIRD-Pandas with 12 models, answering clarification questions helps, but the main bottleneck is recognizing which questions to ask.
 - id: '2604.14624'
   title: 'Asking What Matters: Reward-Driven Clarification for Software Engineering Tasks'
   url: https://arxiv.org/abs/2604.14624
@@ -1648,6 +1728,26 @@
   model: LLM
   topic: Consequence-aware selective execution
   summary: A model-agnostic runtime layer that combines failure probability, consequence, reversibility and ambiguity to route among execute/verify/sandbox/clarify/approve/abstain; validated only in a controlled simulator, with intervention effects being assumed values.
+- id: '2611.31694'
+  title: 'CATWAY: Cost-sensitive agentic three-way robot decisions with calibrated language-model confidence'
+  url: https://arxiv.org/abs/2611.31694
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Elicitation
+  also: []
+  type: Method
+  dims: [When]
+  user: Static dataset
+  training: Training-free
+  modality:
+  - Text
+  - Embodied
+  model: LLM
+  topic: Cost-derived execute / ask / refuse gate for robot agents
+  summary: Derives execute, ask and refuse regions from a loss matrix over clear, ambiguous, infeasible and unsafe instructions, using calibrated probabilities that fuse a ten-sample vote with graded ambiguity, infeasibility and risk scores. Fitted on household instructions and frozen, it cuts mean loss per item to 0.28 vs 0.57-0.83 for prompting baselines and executes none of 142 unsafe instructions.
 - id: '2610.32022'
   title: 'CEMIR vs. FISER: a comparative study of reasoning-based and enrichment-based approaches to pragmatic intent recognition'
   url: https://arxiv.org/abs/2610.32022
@@ -2028,6 +2128,25 @@
   model: VLM
   topic: Human oversight strategies for computer-use agents
   summary: 'Compares four oversight strategies over 192 live web sessions with 48 participants: users intercept only 21% of problematic actions, and approving a plan upfront suppresses runtime review.'
+- id: '2611.29775'
+  title: 'ComplexIF: A Challenging Multi-Turn, Multi-Constraint Instruction-Following Benchmark'
+  url: https://arxiv.org/abs/2611.29775
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Execution
+  also: []
+  type: Benchmark
+  dims: [What]
+  user: Static dataset
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Constraints spread across turns in instruction following
+  summary: Generates multi-turn conversations whose constraints arrive at different turns, with a program-checked format split and an LLM-judged semantic split (tone, audience). Across 14 models, even the strongest satisfies every constraint on fewer than half of the verifiable tasks, and no model leads on both splits.
 - id: 10.1145/3830398.3830658
   title: 'CoNarrate: Computationally Modeling Information Prematureness and Scaffolding the Co-Construction of Patient Narratives in Asynchronous Telehealth'
   url: https://doi.org/10.1145/3830398.3830658
@@ -2504,6 +2623,25 @@
   model: LLM
   topic: Permission policies and overreach blocking
   summary: 'In a simulated day with 7 overreaching actions, 113 non-developers supervised an agent: user-authored policies blocked 20.1 percentage points fewer overreaches than per-action confirmation, and 133 of 148 overreaches were approved by humans.'
+- id: '2611.29028'
+  title: Do You Even Know What I Want? Improving LLMs Ability to Detect Hidden User Intent
+  url: https://arxiv.org/abs/2611.29028
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Elicitation
+  also: []
+  type: Method
+  dims: [When, What]
+  user: Unspecified
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Asking about objectives to uncover misspecified goals
+  summary: Adapts an objective-misspecification formulation, where users with skewed beliefs about the system give misleading information, to LLMs, and tests whether prompting models to ask about the user's underlying objective helps identify it. On five IPC planning domains with four LLMs, asking greatly improves performance in some domains.
 - id: '2611.01878'
   title: 'Don''t Guess, Ask Wisely: Benchmarking and Training Proactive Elicitation in Open-Domain LLM Conversations'
   url: https://arxiv.org/abs/2611.01878
@@ -3225,6 +3363,26 @@
   model: LLM
   topic: Multi-question-type EIG preference elicitation
   summary: Question types compete by EIG over a particle posterior; in investment recommendation, first-round regret is 0.278 (OPEN 0.678), but multi-type competition rebounds in later rounds.
+- id: '2611.25855'
+  title: 'HabitusMem: Belief Memory over Evolving User Preferences for LLM Agents'
+  url: https://arxiv.org/abs/2611.25855
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Tracking
+  also:
+  - Understanding
+  type: Method
+  dims: [What, How]
+  user: Static dataset
+  training: SFT
+  modality:
+  - Text
+  model: LLM
+  topic: Memory as revisable beliefs about current user preferences
+  summary: 'Treats memory as the assistant''s belief about a latent, changing preference state: each record states a belief with its evidence, scope and status, written by a trained model for a frozen agent. It gets the best results among memory systems on PersonaMem-v2 and VitaBench 2.0 across two agent families.'
 - id: '2607.25398'
   title: 'HANDBOOK.md: A Benchmark for Long-Context Agentic Instruction Following'
   url: https://arxiv.org/abs/2607.25398
@@ -3427,6 +3585,25 @@
   model: LLM
   topic: Effect of query underspecification on deep research agents
   summary: Rewrites the full queries of three deep-research benchmarks into underspecified variants missing scope, terminology or preferences, and systematically evaluates how three deep research agents' answer quality and intermediate search behavior change.
+- id: '2611.20195'
+  title: How Specification Explicitness Shapes Failure in LLM-Generated Code
+  url: https://arxiv.org/abs/2611.20195
+  year: 2026
+  venue: ICSE 2026
+  status: accepted
+  venue_source: 'arXiv comment: Accepted to ICSE 2026'
+  venue_iia: ICSE 2026
+  section: Understanding
+  also: []
+  type: User study
+  dims: [What]
+  user: Human
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Explicit behavioural obligations in specifications for LLM coding
+  summary: In a controlled experiment, 72 participants built and revised Python tasks with an LLM under three levels of specification explicitness. Lightweight structure cut hidden-test failures by only 8.7%, while explicit constraints, invariants and edge cases cut them by 47.2%; without them participants overestimated code correctness by about 23 points.
 - id: '2605.23023'
   title: 'How to Steer Your Multi-Agent System: Human-LLM Collaborative Planning'
   url: https://arxiv.org/abs/2605.23023
@@ -3647,6 +3824,25 @@
   model: LLM
   topic: Turn-level credit assignment with implicit process rewards
   summary: 'ITPO: uses an implicit process reward model to derive turn-level rewards from sparse outcome signals, for RL in multi-turn human-AI collaboration (tutoring, recommendation, consulting).'
+- id: '2611.11838'
+  title: Improving Confidence Estimation in Language Models with Linear Representations of Ambiguity
+  url: https://arxiv.org/abs/2611.11838
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also: []
+  type: Method
+  dims: [When]
+  user: Static dataset
+  training: SFT
+  modality:
+  - Text
+  model: LLM
+  topic: Ambiguity directions in activations for calibration
+  summary: Derives ambiguity directions from minimal pairs of ambiguous and unambiguous sentences; steering with them weakly shifts the model's ambiguity judgments. DART fine-tunes within the span of these directions and greatly improves calibration on multiple-choice and generative QA without losing accuracy.
 - id: '2603.00656'
   title: 'InfoPO: Information-Driven Policy Optimization for User-Centric Agents'
   url: https://arxiv.org/abs/2603.00656
@@ -3845,6 +4041,25 @@
   model: LLM
   topic: Question selection by candidate-disagreement entropy
   summary: In IaC synthesis, selects yes/no questions by the entropy of disagreement across three axes among candidate specifications; outperforms direct generation and ATD while using only 1/4 of ATD's tokens.
+- id: '2611.18485'
+  title: Interactive Program Induction with Language Model Priors
+  url: https://arxiv.org/abs/2611.18485
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Elicitation
+  also: []
+  type: Method
+  dims: [What, How]
+  user: Static dataset
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Informative input queries for program induction with an LM prior
+  summary: 'Frames program induction from examples as Bayesian inference with a language-model prior: the learner picks maximally informative inputs and asks the user for their outputs. The greedy query-selection algorithm has a termination bound, and on CodeARC improves accuracy over an LM-only agent by up to 22 points with up to 10.5 fewer examples.'
 - id: '2611.08286'
   title: 'Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds'
   url: https://arxiv.org/abs/2611.08286
@@ -5549,6 +5764,25 @@
   model: VLM
   topic: Proactive clarification in video generation
   summary: Trains a VLM with GRPO to ask a simulated user questions based on the initial prompt and a low-cost draft video, then synthesizes a refined prompt to generate the video, with similarity to a reference video as the reward; a single turn beats multi-turn baselines.
+- id: '2611.24491'
+  title: Probing agent overeagerness in realistic settings with continuation audits
+  url: https://arxiv.org/abs/2611.24491
+  year: 2026
+  venue: NeurIPS 2026 Workshop
+  status: workshop
+  venue_source: 'arXiv comment: Presented at NeurIPS 2026 workshops (Agents in the Wild; Interpreting Agent Behavior)'
+  venue_iia: NeurIPS 2026 Workshop
+  section: Execution
+  also: []
+  type: Method
+  dims: [When]
+  user: Static dataset
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Auditing coding-agent overeagerness from real session prefixes
+  summary: Grounds an auditor on prefixes of real coding-agent sessions (SWE-Chat) and continues them toward seeded out-of-mandate behaviours; a judge cannot tell continuations from real sessions (realism win rate 0.42 vs 0.43). Three recent models each lead a different behaviour, and one keeps bypassing file permissions after an explicit prohibition.
 - id: '2610.24248'
   title: 'Probing Ambiguity: Adversarial Intent Resolution for Robust Text-to-SQL'
   url: https://arxiv.org/abs/2610.24248
@@ -5787,6 +6021,25 @@
   model: LLM
   topic: Reasoning while asking
   summary: PIR turns reasoning LLMs from passive solvers into proactive inquirers using uncertainty-aware SFT and simulator-based policy optimization; accuracy improves by up to 32.7% and reasoning compute is roughly halved.
+- id: '2611.23572'
+  title: Receiver-Conditioned Clarification for Multi-Agent Food Assistance
+  url: https://arxiv.org/abs/2611.23572
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Elicitation
+  also: []
+  type: Method
+  dims: [When]
+  user: Unspecified
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Keeping uncertainty across agent handoffs for clarification
+  summary: In multi-agent food assistance, uncertainty can be lost across agent handoffs, so tentative readings travel as facts. The inference-time framework keeps shared premise identities, has each receiving agent expose its admissible decisions and missing evidence, and scores information questions and user-confirmable fallbacks together under shared budgets.
 - id: '2610.19723'
   title: Recognizing Dialogue Ambiguity via Candidate Set Visual Grounding
   url: https://arxiv.org/abs/2610.19723
@@ -6170,6 +6423,45 @@
   model: LLM
   topic: Scope adherence (under goal pressure)
   summary: ScopeBench has 30 penetration-testing tasks whose goals can only be achieved by going out of scope, comparing with and without scope statements to measure agents' scope adherence under goal pressure.
+- id: '2611.21183'
+  title: 'Seeing Isn''t Resolving: Visual and Linguistic Disambiguation with Conversational Grounding'
+  url: https://arxiv.org/abs/2611.21183
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also: []
+  type: Benchmark
+  dims: [What]
+  user: Static dataset
+  training: Not applicable
+  modality:
+  - Text
+  - Image
+  model: VLM
+  topic: Visual and linguistic ambiguity in Japanese human-robot dialogue
+  summary: Builds JAG-D, Japanese human-robot multimodal dialogues covering visual and linguistic ambiguity, and evaluates VLMs on recognizing and resolving it. Dialogue context substantially improves resolution of linguistic ambiguity, especially Japanese zero anaphora, and the study separates the role of dialogue content from conversational structure.
+- id: '2611.30873'
+  title: Semantic-aware Decoding for Diverse Text-to-SQL under Schema Ambiguity
+  url: https://arxiv.org/abs/2611.30873
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also: []
+  type: Method
+  dims: [What]
+  user: Static dataset
+  training: Training-free
+  modality:
+  - Text
+  model: LLM
+  topic: Diverse SQL decoding under schema ambiguity
+  summary: LLMs facing schema ambiguity put nearly all top-k SQL on one interpretation. Semantic-aware Logit Adjustment, a training-free decoding method, adjusts token logits by semantic similarity between schema elements and improves interpretation coverage at much lower inference cost than diversity-oriented baselines.
 - id: '2605.06353'
   title: 'SEQUOR: A Multi-Turn Benchmark for Realistic Constraint Following'
   url: https://arxiv.org/abs/2605.06353
@@ -6190,6 +6482,26 @@
   model: LLM
   topic: Constraint retention in long conversations
   summary: 'SEQUOR measures constraint following with 50-turn persona-simulated dialogues: a single constraint drops by more than 11% over turns, multiple constraints by more than 40%, and mid-conversation constraint replacement by more than 9%.'
+- id: '2611.19643'
+  title: 'SG-LegalClarify: A Large-Scale Benchmark for Legal Reasoning and Ambiguity Recognition in Singapore Law'
+  url: https://arxiv.org/abs/2611.19643
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also:
+  - Elicitation
+  type: Benchmark
+  dims: [When, What]
+  user: User simulator
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Underspecified lay legal questions in Singapore law
+  summary: 1,100 lawyer-written questions over 10 legal domains (760 underspecified, each with hidden facts and a fully specified twin), graded with IRAC rubrics; models choose to answer or clarify and a simulator reveals facts only when asked. Across 19 LLMs the best satisfies 69.8% of mandatory rubric items closed-book and 77.8% with search, and models struggle to tell when clarification is needed.
 - id: '2608.08884'
   title: 'SHRIMP: Iterative Refinement of Robot Task Plans'
   url: https://arxiv.org/abs/2608.08884
@@ -6552,6 +6864,26 @@
   model: LLM
   topic: Requirement clarification for greenfield software
   summary: Builds a benchmark from 100 high-value Upwork jobs in which a coding agent first clarifies with a client agent over multiple turns and then implements independently, with code acceptance and requirement-understanding QA evaluated separately.
+- id: '2611.20218'
+  title: 'SWE-CoWork: Benchmarking Coding Agents as Digital Employees in Organizations'
+  url: https://arxiv.org/abs/2611.20218
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Elicitation
+  also:
+  - Evaluation
+  type: Benchmark
+  dims: [What, How]
+  user: User simulator
+  training: Not applicable
+  modality:
+  - Text
+  model: LLM
+  topic: Recovering requirements from colleagues in a simulated organization
+  summary: 101 assignments in 101 real repositories where a coding agent must gather requirements from 26 simulated colleagues and workplace records, reconcile conflicts and pass private tests. Leading models pass about 63% of fail-to-pass tests but complete under 8% of assignments; Claude-Opus-5.5 obtains only 64% of colleague-held requirements.
 - id: '2610.30047'
   title: 'SWE-DIVE: Multi-Turn Coding Agent Evaluation with Dynamic User Simulation'
   url: https://arxiv.org/abs/2610.30047
@@ -7408,6 +7740,27 @@
   model: LLM
   topic: Multi-turn coding evaluation with dynamic users
   summary: Uses dynamic-persona simulated users calibrated on over 20,000 real development sessions, with per-turn tests and a dual-agent judge, to evaluate 11 coding agents on 72 tasks; rankings change with the turn budget.
+- id: '2611.30157'
+  title: 'UUBench: Understanding the Unspoken toward Full-Duplex Multimodal Interaction'
+  url: https://arxiv.org/abs/2611.30157
+  year: 2026
+  venue: arXiv
+  status: preprint
+  venue_source: no acceptance found (arXiv comment, checked 2026-11-28)
+  venue_iia: arXiv
+  section: Understanding
+  also: []
+  type: Benchmark
+  dims: [What, How]
+  user: Static dataset
+  training: Not applicable
+  modality:
+  - Text
+  - Audio
+  - Video
+  model: VLM
+  topic: Unspoken intent in full-duplex multimodal interaction
+  summary: A benchmark for whether real-time multimodal systems understand intent conveyed by prosody, facial expression, gesture and context, and respond to it. Process-oriented scoring grounds intent fulfillment in observable audiovisual cues per dimension, and outcome-oriented scoring rates naturalness under audio-only, visual-only and audiovisual conditions.
 - id: '2610.27248'
   title: 'ValiAssist: Scaling LLM-generated Programming Feedback Validation by Demonstration'
   url: https://arxiv.org/abs/2610.27248
